@@ -1,1 +1,1 @@
-The sceleton is provide by SoftUni.
+The skeleton is provided by SoftUni.
