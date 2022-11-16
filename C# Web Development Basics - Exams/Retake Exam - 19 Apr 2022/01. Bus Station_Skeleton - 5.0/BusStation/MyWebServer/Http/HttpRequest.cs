@@ -1,11 +1,11 @@
 ﻿namespace MyWebServer.Http
 {
+    using MyWebServer.Http.Collections;
+    using MyWebServer.Services;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
-    using MyWebServer.Http.Collections;
-    using MyWebServer.Services;
 
     public class HttpRequest
     {
@@ -165,9 +165,9 @@
 
             if (!Sessions.ContainsKey(sessionId))
             {
-                Sessions[sessionId] = new HttpSession(sessionId) 
-                { 
-                    IsNew = true 
+                Sessions[sessionId] = new HttpSession(sessionId)
+                {
+                    IsNew = true
                 };
             }
 

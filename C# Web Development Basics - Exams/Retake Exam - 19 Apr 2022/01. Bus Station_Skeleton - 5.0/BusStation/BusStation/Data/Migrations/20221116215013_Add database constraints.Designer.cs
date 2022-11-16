@@ -3,14 +3,16 @@ using BusStation.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BusStation.Data.Migrations
 {
     [DbContext(typeof(BusStationDbContext))]
-    partial class BusStationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221116215013_Add database constraints")]
+    partial class Adddatabaseconstraints
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

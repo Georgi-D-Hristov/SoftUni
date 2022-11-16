@@ -1,7 +1,7 @@
 ﻿namespace BusStation.Controllers
 {
-    using MyWebServer.Http;
     using MyWebServer.Controllers;
+    using MyWebServer.Http;
     public class HomeController : Controller
     {
         public HttpResponse Index()

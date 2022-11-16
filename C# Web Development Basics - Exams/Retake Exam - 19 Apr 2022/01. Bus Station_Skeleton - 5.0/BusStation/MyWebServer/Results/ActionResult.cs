@@ -1,12 +1,11 @@
 ﻿namespace MyWebServer.Results
 {
-    using System.Collections.Generic;
     using MyWebServer.Http;
     using MyWebServer.Http.Collections;
 
     public abstract class ActionResult : HttpResponse
     {
-        protected ActionResult(HttpResponse response) 
+        protected ActionResult(HttpResponse response)
             : base(response.StatusCode)
         {
             this.Content = response.Content;

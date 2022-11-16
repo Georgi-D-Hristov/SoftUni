@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using static DataConstants.Destination;
+
     public class Destination
     {
         [Key]
@@ -10,19 +12,19 @@
         public int Id { get; init; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(NameMaxLength)]
         public string DestinationName { get; init; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(OriginMaxLength)]
         public string Origin { get; init; }
 
         [Required]
-        [MaxLength(30)]
+        [MaxLength(DateTimeMaxLength)]
         public string Date { get; init; }
 
         [Required]
-        [MaxLength(30)]
+        [MaxLength(DateTimeMaxLength)]
         public string Time { get; init; }
 
         [Required]

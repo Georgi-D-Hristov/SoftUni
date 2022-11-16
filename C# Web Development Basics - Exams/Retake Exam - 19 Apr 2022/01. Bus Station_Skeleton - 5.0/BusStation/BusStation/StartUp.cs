@@ -1,11 +1,13 @@
-﻿namespace BusStation
+﻿
+
+namespace BusStation
 {
+    using BusStation.Data;
+    using Microsoft.EntityFrameworkCore;
     using MyWebServer;
-    using System.Threading.Tasks;
     using MyWebServer.Controllers;
     using MyWebServer.Results.Views;
-    using Microsoft.EntityFrameworkCore;
-    using BusStation.Data;
+    using System.Threading.Tasks;
 
     public class Startup
     {

@@ -6,9 +6,9 @@
     {
         public ContentResult(
             HttpResponse response,
-            string content, 
+            string content,
             string contentType)
-            : base(response) 
+            : base(response)
             => this.SetContent(content, contentType);
     }
 }

@@ -18,14 +18,14 @@ namespace BusStation.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                .HasMany(u=>u.Tickets)
+                .HasMany(u => u.Tickets)
                 .WithOne(t => t.User)
-                .HasForeignKey(t=>t.UserId)
+                .HasForeignKey(t => t.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Destination>()
-                .HasMany(d=>d.Tickets)
+                .HasMany(d => d.Tickets)
                 .WithOne(t => t.Destination)
-                .HasForeignKey(t=>t.DestinationId)
+                .HasForeignKey(t => t.DestinationId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
