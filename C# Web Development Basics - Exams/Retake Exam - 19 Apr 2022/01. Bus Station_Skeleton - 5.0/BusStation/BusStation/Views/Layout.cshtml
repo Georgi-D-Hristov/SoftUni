@@ -9,12 +9,18 @@
     <nav>
         <div class="navigation">
             <ul>
-                <li><a href="/Tickets/MyTickets" class="link-light">My Tickets</a></li>
-                <li><a href="/Destinations/Add" class="link-light">Add Destination</a></li>
-                <li><a href="/Destinations/All" class="link-light">Destinations</a></li>
-                <li><a href="/Users/Logout" class="link-light">Logout</a></li>
-                <li><a href="/Users/Login" class="link-light">Login</a></li>
-                <li><a href="/Users/Register" class="link-light">Register</a></li>
+                @if (User==null)
+                {
+                    <li><a href="/Users/Login" class="link-light">Login</a></li>
+                    <li><a href="/Users/Register" class="link-light">Register</a></li>
+                }
+                @if(User!=null)
+                {
+                    <li><a href="/Tickets/MyTickets" class="link-light">My Tickets</a></li>
+                    <li><a href="/Destinations/Add" class="link-light">Add Destination</a></li>
+                    <li><a href="/Destinations/All" class="link-light">Destinations</a></li>
+                    <li><a href="/Users/Logout" class="link-light">Logout</a></li>
+                }  
             </ul>
         </div>
     </nav>
