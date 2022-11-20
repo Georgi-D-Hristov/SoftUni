@@ -3,6 +3,7 @@
 namespace BusStation
 {
     using BusStation.Data;
+    using BusStation.Services;
     using Microsoft.EntityFrameworkCore;
     using MyWebServer;
     using MyWebServer.Controllers;
@@ -18,6 +19,7 @@ namespace BusStation
                    .MapControllers())
                .WithServices(services => services
                .Add<BusStationDbContext>()
+               .Add<IValidator, Validator>()
                .Add<IViewEngine, CompilationViewEngine>())
                .WithConfiguration<BusStationDbContext>(context => context
                    .Database.Migrate())
