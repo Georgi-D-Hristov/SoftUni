@@ -24,7 +24,6 @@
         public string Email { get; init; }
 
         [Required]
-        [MaxLength(PasswordMaxLength)]
         public string Password { get; init; }
 
         public IEnumerable<Ticket> Tickets { get; private set; } = new HashSet<Ticket>();

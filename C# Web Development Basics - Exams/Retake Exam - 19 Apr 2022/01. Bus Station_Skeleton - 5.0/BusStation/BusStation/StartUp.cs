@@ -1,6 +1,4 @@
-﻿
-
-namespace BusStation
+﻿namespace BusStation
 {
     using BusStation.Data;
     using BusStation.Services;
@@ -20,6 +18,7 @@ namespace BusStation
                .WithServices(services => services
                .Add<BusStationDbContext>()
                .Add<IValidator, Validator>()
+               .Add<IPasswordHasher, PasswordHasher>()
                .Add<IViewEngine, CompilationViewEngine>())
                .WithConfiguration<BusStationDbContext>(context => context
                    .Database.Migrate())

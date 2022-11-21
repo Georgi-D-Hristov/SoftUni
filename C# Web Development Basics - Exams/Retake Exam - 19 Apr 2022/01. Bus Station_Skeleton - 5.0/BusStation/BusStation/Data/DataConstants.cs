@@ -9,7 +9,7 @@
 
             public const int EmailMaxLength = 60;
             public const int EmailMinLength = 10;
-            public const string EmailValidationPattern = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+            public const string EmailValidationPattern = @"^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$";
 
             public const int PasswordMaxLength = 20;
             public const int PasswordMinLengt = 5;
