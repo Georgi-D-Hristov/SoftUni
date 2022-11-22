@@ -6,6 +6,10 @@
     {
         public HttpResponse Index()
         {
+            if (User.IsAuthenticated)
+            {
+                return Redirect("Destinations/All");
+            }
             return View();
         }
     }
