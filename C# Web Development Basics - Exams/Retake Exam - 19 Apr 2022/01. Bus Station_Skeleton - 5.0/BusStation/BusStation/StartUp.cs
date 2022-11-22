@@ -2,6 +2,7 @@
 {
     using BusStation.Data;
     using BusStation.Services;
+    using BusStation.Services.Users;
     using Microsoft.EntityFrameworkCore;
     using MyWebServer;
     using MyWebServer.Controllers;
@@ -19,6 +20,7 @@
                .Add<BusStationDbContext>()
                .Add<IValidator, Validator>()
                .Add<IPasswordHasher, PasswordHasher>()
+               .Add<IUserService, UserService>()
                .Add<IViewEngine, CompilationViewEngine>())
                .WithConfiguration<BusStationDbContext>(context => context
                    .Database.Migrate())
