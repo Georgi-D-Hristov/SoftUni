@@ -1,10 +1,12 @@
 ﻿namespace BusStation.Services
 {
     using BusStation.Data;
+    using BusStation.ViewModels.Destinations;
     using BusStation.ViewModels.Users;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using static BusStation.Data.DataConstants.User;
+    using static BusStation.Data.DataConstants.Destination;
 
     public class Validator : IValidator
     {
@@ -14,6 +16,8 @@
         {
             this.data = data;
         }
+
+
         public ICollection<string> ValidateUserRegistration(UserRegisterFormModel model)
         {
             var errors = new List<string>();
@@ -39,6 +43,23 @@
             if (model.Password != model.ConfirmPassword)
             {
                 errors.Add($"The {nameof(model.Password)} and {nameof(model.ConfirmPassword)} are not equal.");
+            }
+
+            return errors;
+        }
+
+
+        public ICollection<string> ValidateDestinationAdd(DestinationsAddFormModel model)
+        {
+            var errors = new List<string>();
+
+            if (model.DestinationName.Length < NameMinLength && model.DestinationName.Length > NameMaxLength)
+            {
+                errors.Add($"Destination name have to be between {NameMaxLength} and {NameMinLength} characters length");
+            }
+            if (model.Origin.Length < OriginMinLength && model.Origin.Length > OriginMaxLength)
+            {
+                errors.Add($"Origin have to be beteen {OriginMaxLength} and {OriginMinLength} characters length");
             }
 
             return errors;

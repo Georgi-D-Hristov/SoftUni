@@ -80,7 +80,7 @@
             this.SignIn(userId);
 
 
-            return Redirect("/Destinations/All ");
+            return Redirect("/Destinations/All");
         }
 
         public HttpResponse Logout()

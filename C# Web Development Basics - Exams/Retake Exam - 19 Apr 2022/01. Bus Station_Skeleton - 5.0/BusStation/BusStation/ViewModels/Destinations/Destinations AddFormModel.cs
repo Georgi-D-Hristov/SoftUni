@@ -8,11 +8,10 @@
 
         public string Origin { get; init; }
 
+        
         public string Date { get; init; }
 
-        public string Time { get; init; }
-
-        [DisplayName("Image")]
+        
         public string ImageUrl { get; init; }
     }
 }
