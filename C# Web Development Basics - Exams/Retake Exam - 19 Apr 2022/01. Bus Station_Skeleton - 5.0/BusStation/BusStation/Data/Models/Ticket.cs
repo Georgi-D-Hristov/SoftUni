@@ -8,7 +8,7 @@
         [Required]
         public int Id { get; init; }
 
-        public decimal Price { get; private set; }
+        public decimal Price { get; init; }
 
         
         public string UserId { get; init; }

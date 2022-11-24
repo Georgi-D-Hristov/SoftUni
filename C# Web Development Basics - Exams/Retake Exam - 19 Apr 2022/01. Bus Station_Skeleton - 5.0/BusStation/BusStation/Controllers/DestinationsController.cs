@@ -28,6 +28,7 @@
             var destinations = data.Destinations
                 .Select(d => new DestinationsListViewModel
                 {
+                    Id= d.Id,
                     DestinationName = d.DestinationName,
                     Origin = d.Origin,
                     Date = d.Date,

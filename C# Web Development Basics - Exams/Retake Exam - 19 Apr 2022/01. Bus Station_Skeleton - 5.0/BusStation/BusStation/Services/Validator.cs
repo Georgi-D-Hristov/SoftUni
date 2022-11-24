@@ -7,6 +7,10 @@
     using System.Text.RegularExpressions;
     using static BusStation.Data.DataConstants.User;
     using static BusStation.Data.DataConstants.Destination;
+    using BusStation.ViewModels.Tickets;
+
+    using static Data.DataConstants.Ticket;
+    using Microsoft.VisualBasic;
 
     public class Validator : IValidator
     {
@@ -62,6 +66,17 @@
                 errors.Add($"Origin have to be beteen {OriginMaxLength} and {OriginMinLength} characters length");
             }
 
+            return errors;
+        }
+
+        public ICollection<string> ValidateTikcetsCreate(TicketsCreateFormModel model)
+        {
+            var errors = new List<string>();
+
+            if (model.Price < MinPrice && model.Price > MaxPrice)
+            {
+                errors.Add($"Price have to be between {MinPrice}EUR and {MaxPrice}EUR");
+            }
             return errors;
         }
     }

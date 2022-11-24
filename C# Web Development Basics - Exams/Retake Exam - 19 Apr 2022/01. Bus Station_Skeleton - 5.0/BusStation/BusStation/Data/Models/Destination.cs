@@ -30,6 +30,6 @@
         [Required]
         public string ImageUrl { get; init; }
 
-        public IEnumerable<Ticket> Tickets { get; private set; } = new HashSet<Ticket>();
+        public IEnumerable<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
     }
 }
