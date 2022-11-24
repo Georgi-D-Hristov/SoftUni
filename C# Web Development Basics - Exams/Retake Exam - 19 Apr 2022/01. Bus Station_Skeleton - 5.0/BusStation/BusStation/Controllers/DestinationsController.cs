@@ -7,9 +7,9 @@
     using MyWebServer.Controllers;
     using MyWebServer.Http;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-    using System.Reflection.Metadata;
 
     public class DestinationsController : Controller
     {
@@ -25,7 +25,19 @@
         [Authorize]
         public HttpResponse All()
         {
-            return View();
+            var destinations = data.Destinations
+                .Select(d => new DestinationsListViewModel
+                {
+                    DestinationName = d.DestinationName,
+                    Origin = d.Origin,
+                    Date = d.Date,
+                    Time = d.Time,
+                    ImageUrl = d.ImageUrl,
+                    Tickets=d.Tickets.Count()
+                })
+                .ToList();
+
+            return View(destinations);
         }
 
         [Authorize]
@@ -36,7 +48,7 @@
 
         [Authorize]
         [HttpPost]
-        public HttpResponse Add(DestinationsAddFormModel model) 
+        public HttpResponse Add(DestinationsAddFormModel model)
         {
             var errorsModel = validator.ValidateDestinationAdd(model);
 
@@ -44,21 +56,21 @@
             {
                 return Error(errorsModel);
             }
-            
+
             var dateTimeArgs = model.Date.Split('T').ToArray();
             var date = DateTime.Parse(dateTimeArgs[0]).ToString("d", DateTimeFormatInfo.InvariantInfo);
             var time = DateTime.Parse(dateTimeArgs[1]).ToString("hh:mm:tt", DateTimeFormatInfo.InvariantInfo);
 
             var destination = new Destination
             {
-                DestinationName= model.DestinationName,
+                DestinationName = model.DestinationName,
                 Origin = model.Origin,
                 Date = date,
                 Time = time,
-                ImageUrl= model.ImageUrl
+                ImageUrl = model.ImageUrl
             };
 
-            data.Add(destination);
+            data.Destinations.Add(destination);
             data.SaveChanges();
 
             return Redirect("/Destinations/All");
