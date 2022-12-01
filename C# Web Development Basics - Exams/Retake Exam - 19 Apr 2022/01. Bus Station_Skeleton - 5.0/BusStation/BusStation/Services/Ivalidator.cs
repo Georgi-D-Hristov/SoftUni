@@ -12,6 +12,6 @@
 
         public ICollection<string> ValidateDestinationAdd(DestinationsAddFormModel model);
 
-        public ICollection<string> ValidateTikcetsCreate(TicketsCreateFormModel model);
+        public ICollection<string> ValidateTikcetsCreate(TicketCreateFormModel model);
     }
 }

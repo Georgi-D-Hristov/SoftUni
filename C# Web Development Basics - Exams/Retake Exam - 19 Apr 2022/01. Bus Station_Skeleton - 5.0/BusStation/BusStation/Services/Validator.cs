@@ -44,6 +44,10 @@
             {
                 errors.Add($"The password should be between {PasswordMinLengt} and {PasswordMaxLength} symbols length.");
             }
+            if (string.IsNullOrWhiteSpace(model.Password))
+            {
+                errors.Add("Please insert valid password!");
+            }
             if (model.Password != model.ConfirmPassword)
             {
                 errors.Add($"The {nameof(model.Password)} and {nameof(model.ConfirmPassword)} are not equal.");
@@ -69,7 +73,7 @@
             return errors;
         }
 
-        public ICollection<string> ValidateTikcetsCreate(TicketsCreateFormModel model)
+        public ICollection<string> ValidateTikcetsCreate(TicketCreateFormModel model)
         {
             var errors = new List<string>();
 
