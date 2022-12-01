@@ -81,6 +81,10 @@
             {
                 errors.Add($"Price have to be between {MinPrice}EUR and {MaxPrice}EUR");
             }
+            if (model.TicketsCount>MaxTicketCount)
+            {
+                errors.Add($"The maximum tickets that you can add is {MaxTicketCount}!");
+            }
             return errors;
         }
     }

@@ -30,6 +30,7 @@
         {
             public const int MaxPrice = 90;
             public const int MinPrice = 10;
+            public const int MaxTicketCount = 10;
         }
     }
 }
