@@ -49,7 +49,7 @@
                 var ticket = new Ticket
             {
                 Price = ticketCreate.Price,
-                UserId = this.User.Id,
+                //UserId = this.User.Id,
                 DestinationId=ticketCreate.DestinationId
             };
 
@@ -77,6 +77,26 @@
                     ImageUrl = d.ImageUrl,
                     Price = d.Tickets.Select(t => t.Price).First()
                 }).ToList();
+
+            return View(tickets);
+        }
+
+        [Authorize]
+        public HttpResponse Reserve(int destinationId)
+        {
+            var tickets = data.Tickets
+                .Select(t => t.Destination)
+                .Where(t=>t.Id==destinationId)
+                .Select(d => new TicketsListedViewModel()
+                {
+                    DestinationName = d.DestinationName,
+                    Origin = d.Origin,
+                    Time = d.Time,
+                    Date = d.Date,
+                    ImageUrl = d.ImageUrl,
+                    Price = d.Tickets.Select(t => t.Price).First()
+                }).ToList();
+
             return View(tickets);
         }
     }

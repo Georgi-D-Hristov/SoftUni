@@ -4,6 +4,7 @@
 
     public class TicketsListedViewModel
     {
+        public int Id { get; init; }
         public string DestinationName { get; init; }
 
         public string Origin { get; init; }

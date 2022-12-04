@@ -80,6 +80,7 @@
     <None Remove="Views\Layout.cshtml" />
     <None Remove="Views\Tickets\Create.cshtml" />
     <None Remove="Views\Tickets\MyTickets.cshtml" />
+    <None Remove="Views\Tickets\Reserve.cshtml" />
     <None Remove="Views\Users\Login.cshtml" />
     <None Remove="Views\Users\Register.cshtml" />
     <None Remove="wwwroot\bootstrap.min.css" />
