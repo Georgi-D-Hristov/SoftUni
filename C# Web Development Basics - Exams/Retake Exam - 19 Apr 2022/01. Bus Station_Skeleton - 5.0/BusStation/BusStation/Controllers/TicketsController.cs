@@ -89,6 +89,7 @@
                 .Where(t=>t.Id==destinationId)
                 .Select(d => new TicketsListedViewModel()
                 {
+                    
                     DestinationName = d.DestinationName,
                     Origin = d.Origin,
                     Time = d.Time,
