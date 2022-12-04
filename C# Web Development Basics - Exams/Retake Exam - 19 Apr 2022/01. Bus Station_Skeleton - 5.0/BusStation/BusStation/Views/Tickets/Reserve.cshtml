@@ -1,0 +1,17 @@
+﻿<main>
+@foreach (var ticket in Model)
+{
+                <section class="purchased-ticket">
+                <div class="purchased-left">
+                        <img src=@ticket.ImageUrl alt="">
+                </div>
+                    <div class="purchased-right">
+                    <div>
+                        <h3>From @ticket.Origin to @ticket.DestinationName</h3><span>Date: @ticket.Date</span><span>Hour: @ticket.Time</span>
+                    </div>
+                        <p>Ticket price: <span>@ticket.Price</span>euros</p>
+                        <a href="/Tickets/Reserve?ticketId=@ticket.Id" class="bookTrip">Book a Trip</a>
+                </div>
+            </section>
+}
+</main>
