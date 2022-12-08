@@ -19,7 +19,6 @@
         public string Email { get; init; }
 
         [Required]
-        [MaxLength(MaxPassword)]
         public string Password { get; init; }
 
         public IEnumerable<UserPlayer> UserPlayers { get; init; } = new HashSet<UserPlayer>();
