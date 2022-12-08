@@ -18,29 +18,36 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    @if (User == null)
+                    {
+                        <li class="nav-item">
                         <a class="nav-link text-white active h5" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white active h5" href="/Users/Login">Login</a>
-                    </li>
-                    <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white active h5" href="/Users/Login">Login</a>
+                        </li>
+                        <li class="nav-item">
                         <a class="nav-link text-white active h5" href="/Users/Register">Register</a>
-                    </li>
+                        </li>
+                    }
+
                 </ul>
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white active h5" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white active h5" href="/Players/Add">Add Player</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white active h5" href="/Players/Collection">My Collection</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-danger active h5" href="/Users/Logout">Logout</a>
-                    </li>
+                    @if (User != null)
+                    {
+                        <li class="nav-item">
+                        <a class="nav-link text-white active h5" href="/Players/All">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white active h5" href="/Players/Add">Add Player</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white active h5" href="/Players/Collection">My Collection</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger active h5" href="/Users/Logout">Logout</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </nav>
