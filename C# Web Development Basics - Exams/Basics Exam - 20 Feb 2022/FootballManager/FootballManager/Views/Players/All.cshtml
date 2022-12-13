@@ -11,10 +11,6 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-center">Striker</li>
                 <li class="list-group-item">
-                    @foreach (var player in Model)
-                    {
-                            <span>@player.Speed</span>
-                    }
                     <span class="speed-stat">10</span><span class="endurance-stat">9</span>
                 </li>
             </ul>
@@ -39,7 +35,7 @@
                                             <span class="speed-stat">@player.Speed</span><span class="endurance-stat">@player.Endurance</span>
                         </li>
                     </ul>
-                    <a href="/Players/AddToCollection?playerId=X" class="btn btn-block btn-primary">Add to Collection</a>
+                    <a href="/Players/AddToCollection?playerId=@player.Id" class="btn btn-block btn-primary">Add to Collection</a>
                 </div>
           </div>
     }
