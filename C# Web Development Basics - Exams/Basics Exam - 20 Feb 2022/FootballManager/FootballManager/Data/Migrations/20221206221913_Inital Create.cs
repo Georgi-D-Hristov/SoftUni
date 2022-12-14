@@ -1,4 +1,4 @@
-﻿namespace FootballManager.data.Migrations
+﻿namespace FootballManager.Data.Migrations
 {
     using Microsoft.EntityFrameworkCore.Migrations;
 

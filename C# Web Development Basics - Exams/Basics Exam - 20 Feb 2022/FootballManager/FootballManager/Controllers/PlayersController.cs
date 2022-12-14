@@ -1,12 +1,12 @@
 ﻿namespace FootballManager.Controllers
 {
+    using System.Linq;
     using FootballManager.Data;
     using FootballManager.Data.Models;
     using FootballManager.Services;
     using FootballManager.ViewModels.Players;
     using MyWebServer.Controllers;
     using MyWebServer.Http;
-    using System.Linq;
 
     [Authorize]
     public class PlayersController : Controller
@@ -22,11 +22,6 @@
 
         public HttpResponse All()
         {
-            //if (!data.Players.Any())
-            //{
-            //    return Error("There are not add players yet!");
-            //}
-
             var players = data.Players
                 .Select(p => new PlayerListedAllViewModel
                 {
@@ -36,7 +31,7 @@
                     Speed = p.Speed,
                     Endurance = p.Endurance,
                     ImageUrl = p.ImageUrl,
-                    Fullname = p.FullName
+                    Fullname = p.FullName,
                 }).ToList();
 
             return View(players);
@@ -44,25 +39,20 @@
 
         public HttpResponse Collection()
         {
-            var isAnyPlayersInCollection = data.UserPlayers.Where(up => up.UserId == this.User.Id).Any();
+            var isAnyPlayersInCollection = this.data.UserPlayers.Where(up => up.UserId == this.User.Id).Any();
 
-            //if (!isAnyPlayersInCollection)
-            //{
-            //    return Error("There is not add player to your collection!");
-            //}
-
-            var playerCollection = data.UserPlayers
+            var playerCollection = this.data.UserPlayers
                 .Where(up => up.UserId == this.User.Id)
                 .Select(up => up.Player)
                 .Select(p => new PlayerListedAllViewModel
                 {
-                    Id=p.Id,
-                    Fullname=p.FullName,
-                    Title=p.Description,
-                    ImageUrl=p.ImageUrl,
-                    Position=p.Position,
-                    Speed=p.Speed,
-                    Endurance=p.Endurance
+                    Id = p.Id,
+                    Fullname = p.FullName,
+                    Title = p.Description,
+                    ImageUrl = p.ImageUrl,
+                    Position = p.Position,
+                    Speed = p.Speed,
+                    Endurance = p.Endurance,
                 }).ToList();
 
             return View(playerCollection);
@@ -84,7 +74,6 @@
 
             var player = new Player
             {
-                
                 FullName = model.FullName,
                 ImageUrl = model.ImageUrl,
                 Position = model.Position,
@@ -92,8 +81,6 @@
                 Endurance = model.Endurance,
                 Description = model.Description
             };
-
-            
 
             data.Add(player);
             data.SaveChanges();
@@ -115,11 +102,10 @@
             return Redirect("/Players/All");
         }
 
-
         public HttpResponse RemoveFromCollection(int playerId)
         {
             var removedPlayer = data.UserPlayers
-                .Where(up=>up.UserId==this.User.Id && up.PlayerId==playerId)
+                .Where(up => up.UserId == this.User.Id && up.PlayerId == playerId)
                 .First();
 
             data.UserPlayers.Remove(removedPlayer);

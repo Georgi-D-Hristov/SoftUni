@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace FootballManager.data.Migrations
+﻿namespace FootballManager.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class Removemaxlengthconstrantonpassword : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

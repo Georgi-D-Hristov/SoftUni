@@ -21,14 +21,14 @@
             modelBuilder.Entity<UserPlayer>()
                 .HasKey(up => new { up.UserId, up.PlayerId });
             modelBuilder.Entity<Player>()
-                .HasMany(p=>p.UserPlayers)
+                .HasMany(p => p.UserPlayers)
                 .WithOne(p => p.Player)
-                .HasForeignKey(p=>p.PlayerId)
+                .HasForeignKey(p => p.PlayerId)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<User>()
-                .HasMany(u=>u.UserPlayers)
-                .WithOne(up=>up.User)
-                .HasForeignKey(u=>u.UserId)
+                .HasMany(u => u.UserPlayers)
+                .WithOne(up => up.User)
+                .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

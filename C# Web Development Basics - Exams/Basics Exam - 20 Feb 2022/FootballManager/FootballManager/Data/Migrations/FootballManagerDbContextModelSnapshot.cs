@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FootballManager.data.Migrations
+namespace FootballManager.Data.Migrations
 {
     [DbContext(typeof(FootballManagerDbContext))]
     partial class FootballManagerDbContextModelSnapshot : ModelSnapshot

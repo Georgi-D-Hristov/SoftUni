@@ -13,15 +13,15 @@
         {
             var errors = new List<string>();
 
-            if (model.FullName.Length<FullNameMinLength||model.FullName.Length>FullNameMaxLength)
+            if (model.FullName.Length < FullNameMinLength || model.FullName.Length > FullNameMaxLength)
             {
                 errors.Add($"Player`s fullname length have to be beetween {FullNameMinLength} and {FullNameMaxLength}!");
             }
-            if (model.Position.Length<PositionMinLength||model.Position.Length>PositionMaxLength)
+            if (model.Position.Length < PositionMinLength || model.Position.Length > PositionMaxLength)
             {
                 errors.Add($"Position length have to be beteen {PositionMinLength} and {PositionMaxLength}!");
             }
-            if (model.Endurance>EnduranceLimit||model.Endurance<1)
+            if (model.Endurance > EnduranceLimit || model.Endurance < 1)
             {
                 errors.Add($"The Endurance have to be positive number no bigger then {EnduranceLimit}");
             }
@@ -29,7 +29,7 @@
             {
                 errors.Add($"The Speed have to be positive number no bigger then {SpeedLimit}");
             }
-            if (model.Description.Length>DescriptionMaxLength)
+            if (model.Description.Length > DescriptionMaxLength)
             {
                 errors.Add($"The Description lenght have to max {DescriptionMaxLength} characters!");
             }

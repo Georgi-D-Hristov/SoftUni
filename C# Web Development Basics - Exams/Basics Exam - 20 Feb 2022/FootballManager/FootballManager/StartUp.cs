@@ -1,12 +1,12 @@
 ﻿namespace FootballManager
 {
-    using MyWebServer;
     using FootballManager.Data;
-    using System.Threading.Tasks;
+    using FootballManager.Services;
+    using Microsoft.EntityFrameworkCore;
+    using MyWebServer;
     using MyWebServer.Controllers;
     using MyWebServer.Results.Views;
-    using Microsoft.EntityFrameworkCore;
-    using FootballManager.Services;
+    using System.Threading.Tasks;
 
     public class Startup
     {

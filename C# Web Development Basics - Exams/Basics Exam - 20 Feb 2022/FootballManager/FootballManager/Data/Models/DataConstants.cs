@@ -1,6 +1,6 @@
 ﻿namespace FootballManager.Data.Models
 {
-    public class DataConstants
+    public static class DataConstants
     {
 
         public const int MinUsername = 5;
@@ -22,7 +22,8 @@
 
         public const byte SpeedLimit = 10;
         public const byte EnduranceLimit = 10;
-                     
+
         public const int DescriptionMaxLength = 200;
+
     }
 }

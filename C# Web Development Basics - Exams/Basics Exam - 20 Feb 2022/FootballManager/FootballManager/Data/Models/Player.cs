@@ -32,7 +32,7 @@
         [Required]
         [MaxLength(DescriptionMaxLength)]
         public string Description { get; init; }
-        
+
         public IEnumerable<UserPlayer> UserPlayers { get; init; } = new HashSet<UserPlayer>();
     }
 }

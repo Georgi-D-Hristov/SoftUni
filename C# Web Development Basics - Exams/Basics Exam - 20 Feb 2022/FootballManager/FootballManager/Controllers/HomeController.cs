@@ -1,7 +1,9 @@
 ﻿namespace FootballManager.Controllers
 {
-    using MyWebServer.Http;
+
     using MyWebServer.Controllers;
+    using MyWebServer.Http;
+
     public class HomeController : Controller
     {
         public HttpResponse Index()

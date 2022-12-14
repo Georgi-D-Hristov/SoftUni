@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FootballManager.data.Migrations
+namespace FootballManager.Data.Migrations
 {
     [DbContext(typeof(FootballManagerDbContext))]
     [Migration("20221208202937_Remove max length constrant on password")]
