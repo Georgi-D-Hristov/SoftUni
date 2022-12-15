@@ -1,13 +1,13 @@
 ﻿namespace MyWebServer
 {
+    using MyWebServer.Http;
+    using MyWebServer.Routing;
+    using MyWebServer.Services;
     using System;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
     using System.Threading.Tasks;
-    using MyWebServer.Http;
-    using MyWebServer.Routing;
-    using MyWebServer.Services;
 
     public class HttpServer
     {
@@ -144,7 +144,7 @@
             if (request.Session.IsNew)
             {
                 response.Cookies.Add(HttpSession.SessionCookieName, request.Session.Id);
-                
+
                 request.Session.IsNew = false;
             }
         }

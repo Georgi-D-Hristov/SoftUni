@@ -4,7 +4,7 @@
 
     public class HttpGetAttribute : HttpMethodAttribute
     {
-        public HttpGetAttribute() 
+        public HttpGetAttribute()
             : base(HttpMethod.Get)
         {
         }

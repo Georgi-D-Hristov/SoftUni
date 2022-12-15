@@ -1,8 +1,8 @@
 ﻿namespace MyWebServer.Results
 {
-    using System.IO;
     using MyWebServer.Http;
     using MyWebServer.Results.Views;
+    using System.IO;
 
     public class ViewResult : ActionResult
     {
@@ -12,11 +12,11 @@
         public ViewResult(
             HttpResponse response,
             IViewEngine viewEngine,
-            string viewName, 
-            string controllerName, 
+            string viewName,
+            string controllerName,
             object model,
             string userId)
-            : base(response) 
+            : base(response)
             => this.GetHtml(viewEngine, viewName, controllerName, model, userId);
 
         private void GetHtml(IViewEngine viewEngine, string viewName, string controllerName, object model, string userId)

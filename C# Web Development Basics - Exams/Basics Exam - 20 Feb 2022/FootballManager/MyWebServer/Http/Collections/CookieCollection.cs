@@ -16,7 +16,7 @@
 
         public int Count => this.cookies.Count;
 
-        public void Add(string name, string value)  
+        public void Add(string name, string value)
             => this.cookies[name] = new HttpCookie(name, value);
 
         public bool Contains(string name)

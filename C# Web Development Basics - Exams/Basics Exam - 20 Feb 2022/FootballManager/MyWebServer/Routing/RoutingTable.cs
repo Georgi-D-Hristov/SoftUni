@@ -1,10 +1,10 @@
 ﻿namespace MyWebServer.Routing
 {
+    using MyWebServer.Common;
+    using MyWebServer.Http;
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using MyWebServer.Common;
-    using MyWebServer.Http;
 
     public class RoutingTable : IRoutingTable
     {
@@ -103,7 +103,7 @@
                     var contentType = HttpContentType.GetByFileExtension(fileExtension);
 
                     return new HttpResponse(HttpStatusCode.OK)
-                        .SetContent(content, contentType);  
+                        .SetContent(content, contentType);
                 });
             }
 

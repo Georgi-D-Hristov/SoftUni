@@ -16,7 +16,7 @@
 
         public int Count => this.headers.Count;
 
-        public void Add(string name, string value) 
+        public void Add(string name, string value)
             => this.headers[name] = new HttpHeader(name, value);
 
         public bool Contains(string name)

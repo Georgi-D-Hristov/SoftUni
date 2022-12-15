@@ -1,12 +1,12 @@
 ﻿namespace FootballManager.Controllers
 {
-    using System.Linq;
     using FootballManager.Data;
     using FootballManager.Data.Models;
     using FootballManager.Services;
     using FootballManager.ViewModels.Players;
     using MyWebServer.Controllers;
     using MyWebServer.Http;
+    using System.Linq;
 
     [Authorize]
     public class PlayersController : Controller

@@ -1,11 +1,11 @@
 ﻿namespace MyWebServer.Controllers
 {
+    using MyWebServer.Http;
+    using MyWebServer.Routing;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using MyWebServer.Http;
-    using MyWebServer.Routing;
 
     public static class RoutingTableExtensions
     {
@@ -54,10 +54,10 @@
                 routingTable.Map(httpMethod, path, responseFunction);
 
                 MapDefaultRoutes(
-                    routingTable, 
-                    httpMethod, 
-                    controllerName, 
-                    actionName, 
+                    routingTable,
+                    httpMethod,
+                    controllerName,
+                    actionName,
                     responseFunction);
             }
 
@@ -68,7 +68,7 @@
             => Assembly
                 .GetEntryAssembly()
                 .GetExportedTypes()
-                .Where(t => !t.IsAbstract 
+                .Where(t => !t.IsAbstract
                     && t.IsAssignableTo(typeof(Controller))
                     && t.Name.EndsWith(nameof(Controller)))
                 .SelectMany(t => t
@@ -83,7 +83,7 @@
                 {
                     return new HttpResponse(HttpStatusCode.Unauthorized);
                 }
-                        
+
                 var controllerInstance = CreateController(controllerAction.DeclaringType, request);
 
                 var parameterValues = GetParameterValues(controllerAction, request);
@@ -201,7 +201,7 @@
                         var propertyValue = request.GetValue(property.Name);
 
                         property.SetValue(
-                            parameterValue, 
+                            parameterValue,
                             Convert.ChangeType(propertyValue, property.PropertyType));
                     }
 
