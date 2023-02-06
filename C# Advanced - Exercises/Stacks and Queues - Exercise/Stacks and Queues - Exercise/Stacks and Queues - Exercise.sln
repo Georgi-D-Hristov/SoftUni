@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.BasicStackOperations", "01.BasicStackOperations\01.BasicStackOperations.csproj", "{CDF96275-1752-4272-A8D7-92851C9F655F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.BasicStackOperations", "01.BasicStackOperations\01.BasicStackOperations.csproj", "{CDF96275-1752-4272-A8D7-92851C9F655F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.BasicQueueOperations", "02.BasicQueueOperations\02.BasicQueueOperations.csproj", "{C4361282-4147-4C60-9BC0-E4C2A8648F4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.BasicQueueOperations", "02.BasicQueueOperations\02.BasicQueueOperations.csproj", "{C4361282-4147-4C60-9BC0-E4C2A8648F4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.MaximumAndMinimumElement", "03.MaximumAndMinimumElement\03.MaximumAndMinimumElement.csproj", "{17AF6D14-709B-44A5-B622-B4328015B63E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.MaximumAndMinimumElement", "03.MaximumAndMinimumElement\03.MaximumAndMinimumElement.csproj", "{17AF6D14-709B-44A5-B622-B4328015B63E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.FastFood", "04.FastFood\04.FastFood.csproj", "{18D366C6-CBAF-4500-8E29-344E43EFFDAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.FastFood", "04.FastFood\04.FastFood.csproj", "{18D366C6-CBAF-4500-8E29-344E43EFFDAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.FashionBoutique", "05.FashionBoutique\05.FashionBoutique.csproj", "{8A3A978A-F270-4480-9246-0F76A78126B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.FashionBoutique", "05.FashionBoutique\05.FashionBoutique.csproj", "{8A3A978A-F270-4480-9246-0F76A78126B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.SongsQueue", "06.SongsQueue\06.SongsQueue.csproj", "{43A37270-6F04-4A32-960D-5376E992E5A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.SongsQueue", "06.SongsQueue\06.SongsQueue.csproj", "{43A37270-6F04-4A32-960D-5376E992E5A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.TruckTour", "07.TruckTour\07.TruckTour.csproj", "{037134FB-5063-4680-9253-E81EA5E65CFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.TruckTour", "07.TruckTour\07.TruckTour.csproj", "{037134FB-5063-4680-9253-E81EA5E65CFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.BalancedParenthesis", "08.BalancedParenthesis\08.BalancedParenthesis.csproj", "{4EA04C17-48C6-4871-A146-7E167CEA7A32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.BalancedParenthesis", "08.BalancedParenthesis\08.BalancedParenthesis.csproj", "{4EA04C17-48C6-4871-A146-7E167CEA7A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.Crossroads", "10.Crossroads\10.Crossroads.csproj", "{56FD0E36-00F7-46CD-86B9-C3DDFD5769D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{4EA04C17-48C6-4871-A146-7E167CEA7A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA04C17-48C6-4871-A146-7E167CEA7A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA04C17-48C6-4871-A146-7E167CEA7A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FD0E36-00F7-46CD-86B9-C3DDFD5769D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FD0E36-00F7-46CD-86B9-C3DDFD5769D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FD0E36-00F7-46CD-86B9-C3DDFD5769D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FD0E36-00F7-46CD-86B9-C3DDFD5769D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
