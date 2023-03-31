@@ -42,9 +42,13 @@ while (input!= "Statistics")
 
 var result = new StringBuilder();
 var theMostFamous = vloggers.OrderByDescending(x => x.Value.Count).Select(v=>v.Key).First();
+var followers = vloggers.OrderByDescending(x => x.Value.Count).Select(v=>v.Value).First();
 
 result.AppendLine($"The V-Logger has a total of {log.Count} vloggers in its logs.");
 result.AppendLine($"1. {theMostFamous} : {log[theMostFamous]["followers"]} followers, {log[theMostFamous]["following"]} following");
-
+foreach (var follower in followers)
+{
+    result.AppendLine($"*  {follower}");
+}
 
 Console.WriteLine(result.ToString().TrimEnd());
