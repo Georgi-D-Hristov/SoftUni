@@ -7,6 +7,6 @@
             Milliliters = milliliters;
         }
 
-        public double Milliliters { get; set; }
+        public virtual double Milliliters { get; set; }
     }
 }

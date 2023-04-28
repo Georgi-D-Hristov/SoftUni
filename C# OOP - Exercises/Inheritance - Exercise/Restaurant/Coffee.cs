@@ -2,10 +2,11 @@
 {
     public class Coffee : HotBeverage
     {
-        public Coffee(string name, decimal price, double milliliters, double caffeine)
-            : base(name, price:3.50m, milliliters:50)
+        public Coffee(string name, double caffeine)
+            : base(name, price: 3.5m, milliliters: 50)
         {
-            Caffeine= caffeine;
+
+            Caffeine = caffeine;
         }
 
         public double Caffeine { get; set; }
