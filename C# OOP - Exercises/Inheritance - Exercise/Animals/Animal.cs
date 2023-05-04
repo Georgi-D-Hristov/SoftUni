@@ -5,15 +5,8 @@
 
     public class Animal
     {
-        private int myVar;
-
-        public int MyProperty
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
-
         private int age;
+        private string gender;
 
         public Animal(string name, int age, string gender)
         {
@@ -23,15 +16,15 @@
         }
         public string Name { get; set; }
 
-        public int Age 
-        { 
+        public int Age
+        {
             get
             {
                 return age;
             }
             set
             {
-                if (value < 0) 
+                if (value <= 0)
                 {
                     throw new ArgumentException("Invalid input!");
                 }
@@ -39,7 +32,21 @@
             }
         }
 
-        public string Gender { get; set; }
+        public string Gender 
+        {
+            get
+            {
+                return gender;
+            }
+            set
+            {
+                if (value!="Male"&&value!="Female")
+                {
+                    throw new ArgumentException("Invalid input!");
+                }
+                gender = value;
+            }
+        }
 
         public virtual string ProduceSound()
         {
@@ -49,9 +56,9 @@
         public override string ToString()
         {
             var output = new StringBuilder();
-            output.AppendLine($"{typeof(Animal).Name}");
+            output.AppendLine($"{nameof(Animal)}");
             output.AppendLine($"{Name} {Age} {Gender}");
-            output.AppendLine($"{ProduceSound}");
+            output.AppendLine($"{this.ProduceSound()}");
 
             return output.ToString().Trim();
         }
