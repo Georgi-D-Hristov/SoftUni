@@ -1,4 +1,4 @@
-using Fluffy_Duffy_Munchkin_Cats_WebApp.Data;
+using Fluffy_Duffy_Munchkin_Cats_WebApp.Models.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

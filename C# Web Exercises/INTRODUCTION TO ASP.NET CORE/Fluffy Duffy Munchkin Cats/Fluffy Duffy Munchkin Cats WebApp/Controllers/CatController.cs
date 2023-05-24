@@ -15,7 +15,7 @@
         { 
             if(!ModelState.IsValid) 
             {
-                return View("/Error");
+                return View(cat);
             }
 
             //var newCat = new Cat
