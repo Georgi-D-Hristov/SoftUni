@@ -4,6 +4,10 @@
 
     public class PandaDbContext : DbContext
     {
+        public PandaDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
