@@ -1,8 +1,9 @@
 ﻿namespace Panda.Data
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class PandaDbContext : DbContext
+    public class PandaDbContext : IdentityDbContext
     {
         public PandaDbContext(DbContextOptions options) : base(options)
         {
