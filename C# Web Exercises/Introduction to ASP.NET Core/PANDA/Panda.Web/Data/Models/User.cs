@@ -20,5 +20,7 @@
 
         [Required]
         public RoleManager<User> Role { get; init; }
+
+        public int MyProperty { get; set; }
     }
 }
