@@ -5,22 +5,15 @@
 
     public class User : IdentityUser
     {
-        [Key]
-        public string Id { get; init; } = Guid.NewGuid().ToString();
+        public User()
+        {
+            Packages = new List<Package>();
+            Receipts = new List<Receipt>();
+        }
+        public ICollection<Package> Packages { get; set; }
 
-        [Required]
-        public string Username { get; init; }
-
-        [Required]
-        public string Password { get; init; }
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; init; }
-
-        [Required]
-        public RoleManager<User> Role { get; init; }
-
-        public int MyProperty { get; set; }
+        public ICollection<Receipt> Receipts { get; set; }
+       
+        //TODO Roll
     }
 }

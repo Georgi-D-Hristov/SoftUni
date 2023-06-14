@@ -4,9 +4,9 @@
     using Microsoft.EntityFrameworkCore;
     using Panda.Web.Data.Models;
 
-    public class PandaDbContext : IdentityDbContext
+    public class PandaDbContext : IdentityDbContext<User>
     {
-        public DbSet<User> Users { get; init; }
+        //public DbSet<User> Users { get; init; }
 
         public DbSet<Package> Packages { get; init; }
 
@@ -24,8 +24,6 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<User>()
-                .HasMany(u=>u.)
 
             base.OnModelCreating(builder);
         }
