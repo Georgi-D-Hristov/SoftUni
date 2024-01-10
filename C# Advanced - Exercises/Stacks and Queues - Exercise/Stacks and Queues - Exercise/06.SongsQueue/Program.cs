@@ -1,11 +1,6 @@
 ﻿var songs = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries).ToList();
 
-var queue = new Queue<string>();
-
-for (int i = 0; i < songs.Count; i++)
-{
-    queue.Enqueue(songs[i]);
-}
+var queue = new Queue<string>(songs);
 
 while (queue.Count>0)
 {
@@ -33,5 +28,4 @@ while (queue.Count>0)
             break;
     }
 }
-
 Console.WriteLine("No more songs!");

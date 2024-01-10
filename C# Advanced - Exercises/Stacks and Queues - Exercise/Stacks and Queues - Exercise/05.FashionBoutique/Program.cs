@@ -1,12 +1,7 @@
 ﻿var input = Console.ReadLine().Split().Select(int.Parse).ToArray();
 var boxCapacity = int.Parse(Console.ReadLine());
 
-var stack = new Stack<int>();
-
-for (int i = 0; i < input.Length; i++)
-{
-    stack.Push(input[i]);
-}
+var stack = new Stack<int>(input);
 
 var needBoxes = 0;
 
