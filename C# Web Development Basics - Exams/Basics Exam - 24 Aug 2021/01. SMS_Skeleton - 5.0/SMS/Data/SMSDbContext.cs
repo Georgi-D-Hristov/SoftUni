@@ -8,8 +8,12 @@
     {
         public SMSDbContext()
         {
-            
         }
+
+
+
+
+
 
         public DbSet<User>   Users { get; init; }
 
@@ -37,9 +41,9 @@
                 .HasForeignKey(u => u.CartId);
 
             modelBuilder.Entity<Cart>()
-                .HasOne(c=> c.User)
-                .WithOne(u=>u.Cart)
-                .HasForeignKey(c=>c.Id)
+                .HasOne(c => c.User)
+                .WithOne(u => u.Cart)
+                .HasForeignKey(c => c.Id);
 
             base.OnModelCreating(modelBuilder);
         }
