@@ -1,12 +1,8 @@
 ﻿var food = int.Parse(Console.ReadLine());
-var queue = new Queue<int>();
 
 var orders = Console.ReadLine().Split().Select(int.Parse).ToList();
 
-for (int i = 0; i < orders.Count; i++)
-{
-    queue.Enqueue(orders[i]);
-}
+var queue = new Queue<int>(orders);
 
 Console.WriteLine(queue.Max());
 
@@ -24,11 +20,4 @@ while (queue.Any() && food > 0)
     }
 }
 
-if (!queue.Any())
-{
-    Console.WriteLine("Orders complete");
-}
-else
-{
-    Console.WriteLine($"Orders left: {string.Join(" ", queue)}");
-}
+Console.WriteLine(!queue.Any() ? "Orders complete" : $"Orders left: {string.Join(" ", queue)}");
