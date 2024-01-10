@@ -1,6 +1,6 @@
-﻿internal class Program
+﻿public class Program
 {
-    private static void Main(string[] args)
+    public static void Main(string[] args)
     {
         var numOfQueries = int.Parse(Console.ReadLine());
 
@@ -35,8 +35,6 @@
                         break;
                     }
                     Console.WriteLine(stack.Min());
-                    break;
-                default:
                     break;
             }
         }
