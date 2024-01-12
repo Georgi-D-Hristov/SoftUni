@@ -1,39 +1,31 @@
-﻿var inputLine = Console.ReadLine().ToArray();
+﻿var input = Console.ReadLine().ToCharArray();
 
-var closed = new Queue<char>();
-var openned = new Stack<char>();
-
-for (int i = 0; i < (inputLine.Length); i++)
-{
-    closed.Enqueue(inputLine[i]);
-}
-
-for (int j = 0; j < (inputLine.Length) / 2; j++)
-{
-    openned.Push(closed.Peek());
-    closed.Dequeue();
-}
-
-var isBalansed = 0;
-
-while (openned.Count > 0 && closed.Count > 0)
-{
-    var open = openned.Peek();
-    var close = closed.Peek();
-    if (open == '(' && ')' == close || open == '{' && '}' == close || open == '[' && ']' == close ||
-        open == ')' && '(' == close || open == '}' && '{' == close || open == ']' && '[' == close)
-    {
-        isBalansed++;
-    }
-    openned.Pop();
-    closed.Dequeue();
-}
-if (isBalansed == inputLine.Count() / 2)
-{
-    Console.WriteLine("YES");
-}
-else
+if (input.Length % 2 != 0)
 {
     Console.WriteLine("NO");
+    return;
 }
 
+var charStack = new Stack<char>();
+
+foreach (var ch in input)
+{
+    if ("{[(".Contains(ch))
+    {
+        charStack.Push(ch);
+    }
+    else if (ch == ')' && charStack.Peek() == '(')
+    {
+        charStack.Pop();
+    }
+    else if (ch == ']' && charStack.Peek() == '[')
+    {
+        charStack.Pop();
+    }
+    else if (ch == '}' && charStack.Peek() == '{')
+    {
+        charStack.Pop();
+    }
+}
+
+Console.WriteLine(charStack.Any() ? "NO" : "YES");
