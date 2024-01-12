@@ -1,37 +1,32 @@
 ﻿var inputLines = int.Parse(Console.ReadLine());
-var tour = new Queue<string>();
+var tour = new Queue<int[]>();
 var indexPump = 0;
-var tank = 0;
 
 for (int i = 0; i < inputLines; i++)
 {
-    var pumpStop = Console.ReadLine();
+    var pumpStop = Console.ReadLine().Split().Select(int.Parse).ToArray();
 
     tour.Enqueue(pumpStop);
 }
 
-while (tour.Count > 0)
+while (true)
 {
-    var currentStop = tour.Peek();
+    var fuel = 0;
 
-    var pumpArgs = currentStop.Split().Select(int.Parse).ToArray();
-    var petrol = pumpArgs[0];
-    var distance = pumpArgs[1];
-
-    tank += petrol;
-
-    if (tank < distance)
+    foreach (var pump in tour)
     {
-        indexPump++;
-        tank = 0;
-        tour.Dequeue();
-        tour.Enqueue(currentStop);
+        fuel += pump[0] - pump[1];
+        if (fuel < 0)
+        {
+            indexPump++;
+            tour.Enqueue(tour.Dequeue());
+            break;
+        }
     }
-    else
+
+    if (fuel >= 0)
     {
-        tank -= distance;
-        tour.Dequeue();
+        break;
     }
 }
-
 Console.WriteLine(indexPump);
