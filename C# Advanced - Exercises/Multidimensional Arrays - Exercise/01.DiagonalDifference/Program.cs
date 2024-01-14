@@ -2,13 +2,13 @@
 
 var matrix = new int[matrixSize, matrixSize];
 
-for (int irow = 0; irow < matrixSize; irow++)
+for (int row = 0; row < matrixSize; row++)
 {
     var inputLine = Console.ReadLine().Split().Select(int.Parse).ToArray();
 
 	for (int col = 0; col < matrixSize; col++)
 	{
-		matrix[irow,col] = inputLine[col];
+		matrix[row,col] = inputLine[col];
 	}
 }
 
@@ -24,7 +24,6 @@ for (int row = 0; row < matrix.GetLength(0); row++)
 {
     secondaryDiagonal+= matrix[row,matrix.GetLength(0)-1-row];
 }
-
 
 var absoluteDifference = Math.Abs(primaryDiagonal - secondaryDiagonal);
 
