@@ -8,7 +8,7 @@ var matrix = new int[rows, cols];
 
 for (int i = 0; i < rows; i++)
 {
-    var input = Console.ReadLine().Split().Select(int.Parse).ToArray();
+    var input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
     for (int j = 0; j < cols; j++)
     {
