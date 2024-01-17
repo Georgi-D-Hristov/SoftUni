@@ -64,7 +64,5 @@ while (command != "END")
         }
     }
 
-
-
     command = Console.ReadLine();
 }
