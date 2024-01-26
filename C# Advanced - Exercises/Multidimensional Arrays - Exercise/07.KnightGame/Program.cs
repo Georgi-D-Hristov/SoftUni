@@ -23,6 +23,8 @@ var removedKnights = 0;
 var attackingKnights = 0;
 bool isAttakPossible = true;
 
+int test = 0;
+
 //1. Define attacking positions of all knights
 
 //row-2 col-1*
@@ -36,6 +38,7 @@ bool isAttakPossible = true;
 
 while (isAttakPossible)
 {
+    test++;
     for (int row = 0; row < board.GetLength((0)); row++)
     {
         for (int col = 0; col < board.GetLength(0); col++)
@@ -47,46 +50,50 @@ while (isAttakPossible)
                     attackingKnights++;
 
                 }
-                else if (IsValidCoordinate(row - 1, col - 2, boaedSize) && board[row - 1][col - 2] == 'K')//2
+                if (IsValidCoordinate(row - 1, col - 2, boaedSize) && board[row - 1][col - 2] == 'K')//2
                 {
                     attackingKnights++;
                 }
-                else if (IsValidCoordinate(row - 2, col + 1, boaedSize) && board[row - 2][col + 1] == 'K')//3
+                if (IsValidCoordinate(row - 2, col + 1, boaedSize) && board[row - 2][col + 1] == 'K')//3
                 {
                     attackingKnights++;
                 }
-                else if (IsValidCoordinate(row - 1, col + 2, boaedSize) && board[row - 1][col + 2] == 'K')//4
+                if (IsValidCoordinate(row - 1, col + 2, boaedSize) && board[row - 1][col + 2] == 'K')//4
                 {
                     attackingKnights++;
                 }
-                else if (IsValidCoordinate(row + 2, col - 1, boaedSize) && board[row + 2][col - 1] == 'K')//5
+                if (IsValidCoordinate(row + 2, col - 1, boaedSize) && board[row + 2][col - 1] == 'K')//5
                 {
                     attackingKnights++;
                 }
-                else if (IsValidCoordinate(row + 1, col - 2, boaedSize) && board[row + 1][col - 2] == 'K')//6
+                if (IsValidCoordinate(row + 1, col - 2, boaedSize) && board[row + 1][col - 2] == 'K')//6
                 {
                     attackingKnights++;
                 }
-                else if (IsValidCoordinate(row + 2, col + 1, boaedSize) && board[row + 2][col + 1] == 'K')//7
+                if (IsValidCoordinate(row + 2, col + 1, boaedSize) && board[row + 2][col + 1] == 'K')//7
                 {
                     attackingKnights++;
                 }
-                else if (IsValidCoordinate(row + 1, col + 2, boaedSize) && board[row + 1][col + 2] == 'K')//8
+                if (IsValidCoordinate(row + 1, col + 2, boaedSize) && board[row + 1][col + 2] == 'K')//8
                 {
                     attackingKnights++;
                 }
-                else
+                if(attackingKnights==0&&test==boaedSize*10)
                 {
                     isAttakPossible = false;
                 }
 
-                if (attackingKnights >= mostAttacingKnight)
+                if (attackingKnights > mostAttacingKnight)
                 {
                     mostAttacingKnight = attackingKnights;
                     attackingKnights = 0;
                     rowMostAttaking = row;
                     colMostAttaking = col;
-                    removedKnights++;
+                    //removedKnights++;
+                }
+                else
+                {
+                    attackingKnights = 0;
                 }
             }
         }
@@ -96,6 +103,8 @@ while (isAttakPossible)
     {
         board[rowMostAttaking][colMostAttaking] = 'O';
         mostAttacingKnight = 0;
+        removedKnights++;
+        attackingKnights = 0;
     }
 }
 
