@@ -1,4 +1,6 @@
-﻿namespace DirectoryTraversal
+﻿using System.Linq;
+
+namespace DirectoryTraversal
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +14,7 @@
             string reportFileName = @"\report.txt";
 
             var reportContent = TraverseDirectory(path);
-            Console.WriteLine(reportContent);
+            //Console.WriteLine(reportContent);
 
             WriteReportToDesktop(reportContent, reportFileName);
         }
@@ -44,10 +46,20 @@
 
         public static void WriteReportToDesktop(Dictionary<string, List<FileInfo>> textContent, string reportFileName)
         {
-            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), reportFileName);
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+ reportFileName;
             using (StreamWriter writer = new StreamWriter(path))
             {
-                throw new NotImplementedException();
+                foreach (var item in textContent
+                             .OrderByDescending(x=>x.Value.Count)
+                             .ThenBy(x=>x.Key))
+                {
+                    Console.WriteLine($"{item.Key}");
+                    writer.WriteLine($"{item.Key}");
+                    foreach (var file in item.Value.OrderBy(x=>x.Length))
+                    {
+                        writer.WriteLine($"--{file} - {file.Length}kb");
+                    }
+                }
             }
         }
     }
