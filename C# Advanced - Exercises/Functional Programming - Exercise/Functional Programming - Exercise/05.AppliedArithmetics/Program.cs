@@ -1,15 +1,34 @@
-﻿var numbers = Console.ReadLine()
+﻿using System.Threading.Channels;
+
+var numbers = Console.ReadLine()
     .Split()
     .Select(int.Parse)
-    .ToList();
+    .ToArray();
 
-private 
+Func<int, int> function = x => x;
+Action<int[]> print = nums => Console.WriteLine(string.Join(" ", nums));
 
-var command = Console.ReadLine();
+string command;
 
-while (command!="end")
+while ((command = Console.ReadLine()) != "end")
 {
-    
-
-    command = Console.ReadLine();
+    if (command == "add")
+    {
+        function = x => x + 1;
+    }
+    else if (command == "multiply")
+    {
+        function = x => x * 2;
+    }
+    else if (command == "subtract")
+    {
+        function = x => x - 1;
+    }
+    else if (command == "print")
+    {
+        print(numbers);
+        continue;
+    }
+    numbers = numbers.Select(x => function(x)).ToArray();
 }
+
