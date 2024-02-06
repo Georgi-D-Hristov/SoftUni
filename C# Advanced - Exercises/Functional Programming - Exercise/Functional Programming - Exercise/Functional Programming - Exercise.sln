@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ReverseAndExclude", "06.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.PredicateForNames", "07.PredicateForNames\07.PredicateForNames.csproj", "{1ED387CE-72D4-4E18-BCB7-CD5B946E9439}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.ListOfPredicates", "08.ListOfPredicates\08.ListOfPredicates.csproj", "{7517247E-9C82-40F3-9CC3-1C3E2EE90F73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{1ED387CE-72D4-4E18-BCB7-CD5B946E9439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ED387CE-72D4-4E18-BCB7-CD5B946E9439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ED387CE-72D4-4E18-BCB7-CD5B946E9439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7517247E-9C82-40F3-9CC3-1C3E2EE90F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7517247E-9C82-40F3-9CC3-1C3E2EE90F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7517247E-9C82-40F3-9CC3-1C3E2EE90F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7517247E-9C82-40F3-9CC3-1C3E2EE90F73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
