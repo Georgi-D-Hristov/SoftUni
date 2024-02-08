@@ -6,10 +6,10 @@ var inputNames = Console.ReadLine()
     .ToList();
 
 var resulList = new List<string>();
-//foreach (var name in inputNames)
-//{
-//    resulList.Add(name);
-//}
+foreach (var name in inputNames)
+{
+    resulList.Add(name);
+}
 
 string inputCommands;
 while ((inputCommands = Console.ReadLine()) != "Print")
@@ -56,21 +56,21 @@ Func<string, bool> GetPredicate(string filter, string parameter)
     return default;
 }
 
-static List<string> Add(List<string> guestList, List<string>resultList, Func<string, bool> predicate)
+static List<string> Add(List<string> guestList, List<string> resultList, Func<string, bool> predicate)
 {
 
-   return guestList= guestList.Where(x => predicate(x)==false).ToList();
+    return guestList = guestList.Where(x => predicate(x) == false).ToList();
 }
 
 static List<string> Remove(List<string> guestList, List<string> resultList, Func<string, bool> predicate)
 {
-    foreach (var guest in guestList)
+    foreach (var guest in resultList)
     {
         if (predicate(guest))
         {
-            resultList.Add(guest);
+            guestList.Add(guest);
         }
     }
 
-    return resultList;
+    return guestList;
 }
