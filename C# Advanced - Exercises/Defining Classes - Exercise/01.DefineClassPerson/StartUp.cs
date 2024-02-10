@@ -1,9 +1,10 @@
-﻿namespace DefiningClasses
+﻿namespace DefiningClasses;
+
+public class StartUp
 {
-    using DefineClass;
-    public class Main()
+    static void Main(string[] args)
     {
-        Person person = new Person("Ivan", 33);
+        var person = new Person();
     }
 }
 
