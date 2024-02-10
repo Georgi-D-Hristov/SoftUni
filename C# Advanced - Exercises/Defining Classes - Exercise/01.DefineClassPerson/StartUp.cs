@@ -14,11 +14,12 @@ public class StartUp
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries);
             var name = input[0];
             var age = int.Parse(input[1]);
-            
+
             var person = new Person(name, age);
             family.AddMember(person);
         }
-        Console.WriteLine(family.GetOldestMember());
+        //  Console.WriteLine(family.GetOldestMember());
+        Console.WriteLine(string.Join("\n", family.GetPersonsOverThirty()));
     }
 }
 

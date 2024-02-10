@@ -37,7 +37,7 @@
 
         public override string? ToString()
         {
-            return $"{Name} {Age}";
+            return $"{Name} - {Age}";
         }
     }
 }

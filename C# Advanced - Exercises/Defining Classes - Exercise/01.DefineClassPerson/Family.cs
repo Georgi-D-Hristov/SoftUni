@@ -5,6 +5,7 @@
 
     public class Family
     {
+        private const int LimitAge = 30;
         private List<Person> persons;
 
         public Family()
@@ -20,6 +21,10 @@
         public Person GetOldestMember()
         {
             return persons.OrderByDescending(p => p.Age).FirstOrDefault();
+        }
+        public List<Person> GetPersonsOverThirty() 
+        { 
+            return persons.Where(p=>p.Age > LimitAge).OrderBy(p=>p.Name).ToList();
         }
     }
 }
