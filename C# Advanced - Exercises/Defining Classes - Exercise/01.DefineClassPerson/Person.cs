@@ -35,5 +35,9 @@
             set { name = value; }
         }
 
+        public override string? ToString()
+        {
+            return $"{Name} {Age}";
+        }
     }
 }
