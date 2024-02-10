@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.Linq.Expressions;
-
-var inputNames = Console.ReadLine()
+﻿var inputNames = Console.ReadLine()
     .Split(" ", StringSplitOptions.RemoveEmptyEntries)
     .ToList();
 
@@ -12,6 +9,7 @@ foreach (var name in inputNames)
 }
 
 string inputCommands;
+
 while ((inputCommands = Console.ReadLine()) != "Print")
 {
     var commands = inputCommands.Split(";", StringSplitOptions.RemoveEmptyEntries);
@@ -58,7 +56,6 @@ Func<string, bool> GetPredicate(string filter, string parameter)
 
 static List<string> Add(List<string> guestList, List<string> resultList, Func<string, bool> predicate)
 {
-
     return guestList = guestList.Where(x => predicate(x) == false).ToList();
 }
 

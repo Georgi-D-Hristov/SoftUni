@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-var names = Console.ReadLine()
+﻿var names = Console.ReadLine()
     .Split(" ", StringSplitOptions.RemoveEmptyEntries)
     .ToList();
 
