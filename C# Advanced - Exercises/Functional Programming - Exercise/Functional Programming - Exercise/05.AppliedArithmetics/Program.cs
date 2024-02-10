@@ -1,6 +1,4 @@
-﻿using System.Threading.Channels;
-
-var numbers = Console.ReadLine()
+﻿var numbers = Console.ReadLine()
     .Split()
     .Select(int.Parse)
     .ToArray();

@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-var range = Console.ReadLine()
+﻿var range = Console.ReadLine()
     .Split()
     .Select(int.Parse)
     .ToArray();
