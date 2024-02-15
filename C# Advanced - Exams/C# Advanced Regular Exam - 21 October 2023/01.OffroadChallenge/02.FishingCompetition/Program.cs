@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-var size = int.Parse(Console.ReadLine());
+﻿var size = int.Parse(Console.ReadLine());
 
 var matrix = new char[size, size];
 var shipRows = -1;
@@ -28,7 +23,7 @@ for (int i = 0; i < size; i++)
 string command;
 while ((command = Console.ReadLine()) != "collect the nets")
 {
- 
+
     switch (command)
     {
         case "up":
@@ -113,20 +108,20 @@ void MoveOposite()
 
 void CheckMove()
 {
-    if (matrix[shipRows,shipCols]=='W')
+    if (matrix[shipRows, shipCols] == 'W')
     {
         Console.WriteLine($"You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: [{shipRows},{shipCols}]");
-        reachWirpool=true;
+        reachWirpool = true;
     }
-    if (matrix[shipRows,shipCols]=='-')
+    if (matrix[shipRows, shipCols] == '-')
     {
-        matrix[shipRows,shipCols]='S';
+        matrix[shipRows, shipCols] = 'S';
     }
-    if (int.TryParse(matrix[shipRows,shipCols].ToString(), out int fish))
+    if (int.TryParse(matrix[shipRows, shipCols].ToString(), out int fish))
     {
         fishTones += fish;
         matrix[shipRows, shipCols] = 'S';
-     
+
     }
 }
 
@@ -136,7 +131,7 @@ void PrintMatrix()
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.Write(matrix[i,j]);
+            Console.Write(matrix[i, j]);
         }
         Console.WriteLine();
     }
