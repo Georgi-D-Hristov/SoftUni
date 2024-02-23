@@ -5,17 +5,42 @@
 
     public class Animal
     {
+        private string name;
         private int age;
-        private string gender;
 
-        public Animal(string name, int age, string gender)
+        public Animal(string name, int age)
         {
             Name = name;
             Age = age;
-            Gender = gender;
         }
-        public string Name { get; set; }
+        public Animal(string name, int age, string gender):this(name, age) 
+        {
 
+            if (gender == "Male")
+            {
+                Gender = Gender.Male;
+            }
+            else if (gender == "Female")
+            {
+                Gender = Gender.Female;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    Console.WriteLine("Invalid input!");
+                }
+                name = value;
+            }
+        }
         public int Age
         {
             get
@@ -26,41 +51,31 @@
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException("Invalid input!");
+                    Console.WriteLine("Invalid input!");
                 }
                 age = value;
             }
         }
-
-        public string Gender 
-        {
-            get
-            {
-                return gender;
-            }
-            set
-            {
-                if (value!="Male"&&value!="Female")
-                {
-                    throw new ArgumentException("Invalid input!");
-                }
-                gender = value;
-            }
-        }
+        public Gender Gender { get; set; }
 
         public virtual string ProduceSound()
         {
-            return string.Empty;
+            return "--";
         }
 
         public override string ToString()
         {
-            var output = new StringBuilder();
-            output.AppendLine($"{nameof(Animal)}");
-            output.AppendLine($"{Name} {Age} {Gender}");
-            output.AppendLine($"{this.ProduceSound()}");
+            var sb = new StringBuilder();
+            
+            sb.AppendLine($"{Name} {Age} {Gender}");
+            sb.AppendLine(ProduceSound());
 
-            return output.ToString().Trim();
+            return sb.ToString().Trim();
         }
+    }
+    public enum Gender
+    {
+        Male,
+        Female
     }
 }
