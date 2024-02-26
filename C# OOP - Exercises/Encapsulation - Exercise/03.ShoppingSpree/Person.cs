@@ -18,7 +18,7 @@ public class Person
     public string Name
     {
         get { return _name; }
-        set
+        private set
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -31,13 +31,13 @@ public class Person
     public List<Product> Bag
     {
         get { return _bag; }
-        set { _bag = value; }
+        private set { _bag = value; }
     }
 
     public decimal Money
     {
         get { return _money; }
-        set
+        private set
         {
             if (value < 0)
             {

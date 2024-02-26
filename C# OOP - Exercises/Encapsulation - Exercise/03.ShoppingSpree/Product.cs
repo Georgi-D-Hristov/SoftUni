@@ -14,7 +14,7 @@ public class Product
     public decimal Cost
     {
         get { return _cost; }
-        set
+        private set
         {
             if (value < 0)
             {
@@ -27,7 +27,7 @@ public class Product
     public string Name
     {
         get { return _name; }
-        set
+        private set
         {
             if (string.IsNullOrEmpty(value))
             {

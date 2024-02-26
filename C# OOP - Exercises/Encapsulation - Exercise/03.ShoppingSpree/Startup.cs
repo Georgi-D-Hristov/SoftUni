@@ -53,15 +53,15 @@ while ((command = Console.ReadLine()) != "END")
     string[] commandArgs = command
         .Split(" ", StringSplitOptions.RemoveEmptyEntries)
         .ToArray();
-    string qustomerName = commandArgs[0];
+    string customerName = commandArgs[0];
     string productName = commandArgs[1];
 
-    Person qustomer = persons.FirstOrDefault(p => p.Name == qustomerName);
+    Person customer = persons.FirstOrDefault(p => p.Name == customerName);
     Product product = products.FirstOrDefault(p => p.Name == productName);
 
-    if (qustomer != null && product != null)
+    if (customer != null && product != null)
     {
-        qustomer.BueProduct(product);
+        customer.BueProduct(product);
     }
 }
 
