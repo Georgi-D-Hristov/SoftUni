@@ -1,10 +1,11 @@
 ﻿namespace AnimalFarm
 {
-    using System;
     using AnimalFarm.Models;
-    class Program
+    using System;
+
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string name = Console.ReadLine();
             int age = int.Parse(Console.ReadLine());
@@ -22,7 +23,6 @@
             {
                 Console.WriteLine(ae.Message);
             }
-         
         }
     }
 }

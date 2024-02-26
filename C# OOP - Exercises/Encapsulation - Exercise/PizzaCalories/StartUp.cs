@@ -1,7 +1,6 @@
 ﻿public class StartUp
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-
     }
 }
