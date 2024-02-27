@@ -1,16 +1,17 @@
 ﻿namespace PizzaCalories.DoughModels;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public class Dough
 {
+    private const int _MaxWeigh = 200;
+    private const int _MinWeigh = 1;
+
     private string _flourType;
     private string _bakingTechnique;
     private int _weigh;
+    private readonly Dictionary<string, double> doughTypes = new Dictionary<string, double> { { "white", 1.5 }, { "wholegrain", 1.0 } };
+    private readonly Dictionary<string, double> bakingTechniques = new Dictionary<string, double> { { "crispy", 0.9 }, { "chewy", 1.1 }, { "homemade", 1.0 } };
 
     public Dough(string flourType, string bakingTechnique, int weigh)
     {
@@ -22,23 +23,35 @@ public class Dough
     public int Weigh
     {
         get { return _weigh; }
-        private set { _weigh = value; }
+        private set
+        {
+            if (value < _MinWeigh || value > _MaxWeigh)
+            {
+                throw new ArgumentException("Dough weight should be in the range [1..200].");
+            }
+            _weigh = value;
+        }
     }
-
 
     public string BakingTechnique
     {
-        get { return _bakingTechnique; }
-        private set { _bakingTechnique = value; }
+        get { return _bakingTechnique.ToLower(); }
+        private set
+        {
+            if (!Enum.TryParse(value.ToLower(), out BakingTechnique _))
+            {
+                throw new ArgumentException("Invalid type of dough.");
+            }
+            _bakingTechnique = value;
+        }
     }
-
 
     public string FlourType
     {
-        get { return _flourType; }
+        get { return _flourType.ToLower(); }
         private set
         {
-            if (!Enum.TryParse(value, out FlourType flourType))
+            if (!Enum.TryParse(value.ToLower(), out FlourType _))
             {
                 throw new ArgumentException("Invalid type of dough.");
             }
@@ -46,15 +59,21 @@ public class Dough
         }
     }
 
+    public double GetCalories()
+    {
+        return 2 * Weigh * doughTypes[FlourType] * bakingTechniques[BakingTechnique];
+    }
 }
+
 public enum FlourType
 {
-    White,
-    Wholegrain
+    white,
+    wholegrain
 }
+
 public enum BakingTechnique
 {
-    Crispy,
-    Chewy,
-    Homemade
+    crispy,
+    chewy,
+    homemade
 }
