@@ -1,11 +1,7 @@
 ﻿namespace BoxData
 {
     using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
 
     public class Box
     {
@@ -46,7 +42,6 @@
             }
         }
 
-
         public double Length
         {
             get
@@ -79,7 +74,6 @@
             var volume = Length * Width * Height;
             return volume;
         }
-
 
         private void IsValid(double value, string propertyName)
         {

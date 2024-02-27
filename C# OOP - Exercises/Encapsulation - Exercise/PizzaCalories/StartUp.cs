@@ -1,6 +1,5 @@
 ﻿using PizzaCalories;
 using PizzaCalories.DoughModels;
-using System.ComponentModel;
 
 public class StartUp
 {
@@ -8,37 +7,36 @@ public class StartUp
     {
         try
         {
+            string[] pizzaInfo = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string pizzaName = pizzaInfo[1];
+
+            string[] doughInfo = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string flourType = doughInfo[1];
+            string bakingTechnique = doughInfo[2];
+            int weigh = int.Parse(doughInfo[3]);
+
+            Dough dough = new(flourType, bakingTechnique, weigh);
+
+            Pizza pizza = new(pizzaName, dough);
+
             string command;
             while ((command = Console.ReadLine()) != "END")
             {
                 string[] commandArgs = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                string ingredient = commandArgs[0];
-                string ingredientType = commandArgs[1];
 
-
-                if (ingredient == "Dough")
-                {
-                    string bakingTechnique = commandArgs[2];
-                    int weigh = int.Parse(commandArgs[3]);
-                    Dough dough = new(ingredientType, bakingTechnique, weigh);
-                    Console.WriteLine(dough.GetCalories().ToString("f2"));
-                }
-                else if (ingredient == "Topping")
-                {
-                    int weight = int.Parse(commandArgs[2]);
-                    Topping topping = new(ingredientType, weight);
-                    Console.WriteLine(topping.GetCalories().ToString("f2"));
-                }
-
+                string toppingType = commandArgs[1];
+                int weight = int.Parse(commandArgs[2]);
+                Topping topping = new(toppingType, weight);
+                pizza.AddTopping(topping);
             }
-
-
+            Console.WriteLine($"{pizzaName} - {pizza.GetTotalCalories():f2} Calories.");
         }
         catch (Exception e)
         {
-
             Console.WriteLine(e.Message);
+            return;
         }
-
     }
 }

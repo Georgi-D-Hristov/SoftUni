@@ -2,9 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Topping
     {
@@ -14,13 +11,12 @@
         private string _toppingType;
         private int _weight;
 
-        private readonly Dictionary<string, double> toppings = new Dictionary<string, double> { { "meat", 1.2 }, { "veggies", 0.8 }, { "cheese", 1.1 }, { "Sauce", 0.9 } };
+        private readonly Dictionary<string, double> toppings = new Dictionary<string, double> { { "meat", 1.2 }, { "veggies", 0.8 }, { "cheese", 1.1 }, { "sauce", 0.9 } };
 
         public Topping(string toppingType, int weight)
         {
             ToppingType = toppingType;
             Weight = weight;
-
         }
 
         public int Weight
@@ -36,7 +32,6 @@
             }
         }
 
-
         public string ToppingType
         {
             get { return _toppingType.ToLower(); }
@@ -44,7 +39,7 @@
             {
                 if (!Enum.TryParse(value.ToLower(), out ToppingType toppingType))
                 {
-                    throw new ArgumentException($"Cannot place {_toppingType} on top of your pizza.");
+                    throw new ArgumentException($"Cannot place {value} on top of your pizza.");
                 }
                 _toppingType = value;
             }
@@ -55,6 +50,7 @@
             return 2 * Weight * toppings[ToppingType];
         }
     }
+
     public enum ToppingType
     {
         meat,
