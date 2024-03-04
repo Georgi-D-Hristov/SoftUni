@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 public interface ILieutenantGeneral:IPrivate
 {
-    IEnumerable<IPrivate> Privates { get; }
+    List<IPrivate> Privates { get; }
 }
