@@ -1,13 +1,12 @@
-﻿namespace _07._MilitaryElite.Contracts
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+﻿namespace _07._MilitaryElite.Contracts;
 
-    public interface ISpy:ISoldier
-    {
-        int CodeNumber { get; init; }
-    }
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+public interface ISpy:ISoldier
+{
+    int CodeNumber { get; init; }
 }

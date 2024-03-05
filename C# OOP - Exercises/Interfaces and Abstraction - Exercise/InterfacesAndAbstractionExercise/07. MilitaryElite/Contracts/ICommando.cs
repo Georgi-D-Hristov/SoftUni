@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 public interface ICommando:ISpecialisedSoldier
 {
-    IEnumerable<IMission> Missions { get; }
+    IList<IMission> Missions { get; set; }
 }

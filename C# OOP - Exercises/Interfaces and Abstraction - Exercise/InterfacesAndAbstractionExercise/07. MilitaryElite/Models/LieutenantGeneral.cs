@@ -1,25 +1,38 @@
-﻿namespace _07._MilitaryElite.Models
+﻿namespace _07._MilitaryElite.Models;
+
+using _07._MilitaryElite.Contracts;
+using System.Collections.Generic;
+using System.Text;
+
+public class LieutenantGeneral : Private, ILieutenantGeneral
 {
-    using _07._MilitaryElite.Contracts;
-    using System.Collections.Generic;
 
-    public class LieutenantGeneral : Private, ILieutenantGeneral
+
+
+
+
+    public LieutenantGeneral(int id, string firstName, string lastName, decimal salary)
+        : base(id, firstName, lastName, salary)
     {
-        
+        Privates = new List<IPrivate>();
+    }
 
-        private readonly 
-        public LieutenantGeneral(int id, string firstName, string lastName, decimal salary) : base(id, firstName, lastName, salary)
+    public List<IPrivate> Privates { get; }
+
+    public void AddPrivate(Private priv)
+    {
+        Privates.Add(priv);
+    }
+
+    public override string? ToString()
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine(base.ToString());
+        sb.AppendLine("Privates:");
+        foreach (IPrivate priv in Privates)
         {
-            Privates = new List<Private>();
+            sb.AppendLine($"  {priv.ToString()}");
         }
-
-        public List<IPrivate> Privates;
-
-        List<IPrivate> IPrivates => throw new NotImplementedException();
-
-        public void AddPrivate(Private priv)
-        {
-            Privates.Add(priv);
-        }
+        return sb.ToString().Trim();
     }
 }
