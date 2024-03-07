@@ -3,7 +3,9 @@
 public interface IVehicle
 {
     double FuelQuantity { get; set; }
-    double FuelConsumption { get; init; }
+    double FuelConsumption { get; set; }
+
+    double TankCapacity { get; init; }
 
     void Drive(double distance, string className);
 
