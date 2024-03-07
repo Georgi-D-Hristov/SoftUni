@@ -1,13 +1,7 @@
-﻿using System.Threading.Channels;
-
-namespace _01.Vehicles.Models;
+﻿namespace _01.Vehicles.Models;
 
 using _01.Vehicles.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public abstract class Vehicle : IVehicle
 {
@@ -16,14 +10,16 @@ public abstract class Vehicle : IVehicle
         FuelQuantity = fuelQuantity;
         FuelConsumption = fuelConsumption;
     }
+
     public double FuelQuantity { get; set; }
     public virtual double FuelConsumption { get; init; }
-    public void Drive(int distance, string className)
+
+    public void Drive(double distance, string className)
     {
         var needFuelAmount = distance * FuelConsumption;
-        if (needFuelAmount>FuelQuantity)
+        if (needFuelAmount > FuelQuantity)
         {
-            Console.WriteLine($"{className} need refueling");
+            Console.WriteLine($"{className} needs refueling");
         }
         else
         {

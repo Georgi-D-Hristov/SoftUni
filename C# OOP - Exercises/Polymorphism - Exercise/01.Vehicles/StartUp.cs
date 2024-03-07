@@ -6,9 +6,6 @@ public class StartUp
 {
     public static void Main(string[] args)
     {
-
-
-
         var carInput = Console.ReadLine()
             .Split(" ", StringSplitOptions.RemoveEmptyEntries);
         var carFuelQuantity = double.Parse(carInput[1]);
@@ -26,10 +23,35 @@ public class StartUp
         {
             var commandArgs = Console.ReadLine()
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            if (commandArgs[0]=="Drive")
+            if (commandArgs[0] == "Drive")
             {
-                
+                switch (commandArgs[1])
+                {
+                    case "Car":
+                        car.Drive(double.Parse(commandArgs[2]), nameof(Car));
+                        break;
+
+                    case "Truck":
+                        truck.Drive(double.Parse(commandArgs[2]), nameof(Truck));
+                        break;
+                }
+            }
+            if (commandArgs[0] == "Refuel")
+            {
+                switch (commandArgs[1])
+                {
+                    case "Car":
+                        car.Refuel(double.Parse(commandArgs[2]));
+                        break;
+
+                    case "Truck":
+                        truck.Refuel(double.Parse(commandArgs[2]));
+                        break;
+                }
             }
         }
+
+        Console.WriteLine($"Car: {car.FuelQuantity:f2}");
+        Console.WriteLine($"Truck: {truck.FuelQuantity:f2}");
     }
 }
