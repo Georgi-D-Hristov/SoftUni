@@ -5,17 +5,40 @@ using System;
 
 public abstract class Vehicle : IVehicle
 {
+    private double _fuelQuantity;
+    private readonly double _tankCapacity;
+
     public Vehicle(double fuelQuantity, double fuelConsumption, double tankCapacity)
     {
-        FuelQuantity = fuelQuantity;
+        if (fuelQuantity > tankCapacity)
+        {
+            FuelQuantity = tankCapacity;
+        }
+        else
+        {
+            FuelQuantity = fuelQuantity;
+        }
+
         FuelConsumption = fuelConsumption;
         TankCapacity = tankCapacity;
     }
 
-    public double FuelQuantity { get; set; }
+    public double FuelQuantity
+    {
+        get => _fuelQuantity;
+        set
+        {
+            _fuelQuantity = value;
+        }
+    }
+
     public virtual double FuelConsumption { get; set; }
 
-    public double TankCapacity { get; init; }
+    public double TankCapacity
+    {
+        get => _tankCapacity;
+        init => _tankCapacity = value;
+    }
 
     public virtual void Drive(double distance, string className)
     {
