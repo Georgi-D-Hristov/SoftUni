@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.Vehicles", "01.Vehicles.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Raiding", "..\03.Raiding\03.Raiding.csproj", "{96F3A915-3F0E-42F7-A3C1-C7464ACFFD6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.1.Raiding", "..\03.1.Raiding\03.1.Raiding.csproj", "{AA179638-3984-4E78-BA07-57EFAC279723}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{96F3A915-3F0E-42F7-A3C1-C7464ACFFD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96F3A915-3F0E-42F7-A3C1-C7464ACFFD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96F3A915-3F0E-42F7-A3C1-C7464ACFFD6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA179638-3984-4E78-BA07-57EFAC279723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA179638-3984-4E78-BA07-57EFAC279723}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA179638-3984-4E78-BA07-57EFAC279723}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA179638-3984-4E78-BA07-57EFAC279723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
