@@ -14,17 +14,52 @@ public class StartUp
         {
             var name = Console.ReadLine();
             var heroType = Console.ReadLine();
-            var hero = HeroFactory.CreateHero(heroType, name);
-            if (hero == null)
+            //var hero = HeroFactory.CreateHero(heroType, name);
+            //if (hero == null)
+            //{
+            //    Console.WriteLine("Invalid hero!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine(hero.CastAbility());
+
+            //    heroes.Add(hero);
+            //}
+
+            if (heroType=="Druid")
             {
-                Console.WriteLine("Invalid hero!");
+                var druid = new Druid(name);
+                heroes.Add(druid);
+
+            }
+
+            else if (heroType=="Paladin")
+            {
+                var paladin = new Paladin(name);
+                heroes.Add(paladin);
+            }
+
+            else if (heroType=="Rogue")
+            {
+                var rogue = new Rogue(name);
+                heroes.Add(rogue);
+            }
+
+            else if (heroType=="Warrior")
+            {
+                var warrior = new Warrior(name);
+                heroes.Add(warrior);
             }
             else
             {
-                Console.WriteLine(hero.CastAbility());
-
-                heroes.Add(hero);
+                Console.WriteLine("Invalid hero!");
+                i--;
             }
+        }
+
+        foreach (var hero in heroes)
+        {
+            Console.WriteLine(hero.CastAbility());
         }
 
         var bossPower = int.Parse(Console.ReadLine());
