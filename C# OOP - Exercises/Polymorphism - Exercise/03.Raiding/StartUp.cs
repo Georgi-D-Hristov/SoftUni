@@ -26,26 +26,22 @@ public class StartUp
             //    heroes.Add(hero);
             //}
 
-            if (heroType=="Druid")
+            if (heroType == "Druid")
             {
                 var druid = new Druid(name);
                 heroes.Add(druid);
-
             }
-
-            else if (heroType=="Paladin")
+            else if (heroType == "Paladin")
             {
                 var paladin = new Paladin(name);
                 heroes.Add(paladin);
             }
-
-            else if (heroType=="Rogue")
+            else if (heroType == "Rogue")
             {
                 var rogue = new Rogue(name);
                 heroes.Add(rogue);
             }
-
-            else if (heroType=="Warrior")
+            else if (heroType == "Warrior")
             {
                 var warrior = new Warrior(name);
                 heroes.Add(warrior);
