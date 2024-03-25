@@ -2,12 +2,6 @@
 
 namespace HighwayToPeak.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class NaturalClimber : Climber
     {
         public NaturalClimber(string name)
@@ -21,7 +15,6 @@ namespace HighwayToPeak.Models
             {
                 base.Climb(peak);
             }
-
         }
 
         public override void Rest(int daysCount)

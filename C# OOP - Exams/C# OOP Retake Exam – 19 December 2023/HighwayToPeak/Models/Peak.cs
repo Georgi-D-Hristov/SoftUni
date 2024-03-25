@@ -1,9 +1,8 @@
 ﻿namespace HighwayToPeak.Models
 {
-    using System;
-
     using HighwayToPeak.Models.Contracts;
     using HighwayToPeak.Utilities.Messages;
+    using System;
 
     public class Peak : IPeak
     {
