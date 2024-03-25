@@ -20,7 +20,7 @@
         public string Name
         {
             get => _name;
-            init
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -33,7 +33,7 @@
         public int Elevation
         {
             get => _elevation;
-            init
+            private set
             {
                 if (value < 0)
                 {
@@ -46,7 +46,7 @@
         public string DifficultyLevel
         {
             get => _difficultyLevel;
-            init => _difficultyLevel = value;
+            private set => _difficultyLevel = value;
         }
 
         public override string ToString()

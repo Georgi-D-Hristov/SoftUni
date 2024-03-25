@@ -13,7 +13,7 @@
         private int _stamina;
         private List<string> _conqueredPeaks;
 
-        public Climber(string name, int stamina)
+        protected Climber(string name, int stamina)
         {
             Name = name;
             Stamina = stamina;
@@ -71,10 +71,8 @@
             DecreaseStamina(peak);
         }
 
-        public virtual void Rest(int daysCount)
-        {
-            Stamina += daysCount;
-        }
+        public abstract void Rest(int daysCount);
+      
 
         public override string ToString()
         {
@@ -89,7 +87,7 @@
                 sb.AppendLine($"Peaks conquered: {ConqueredPeaks.Count}");
             }
 
-            return base.ToString();
+            return sb.ToString().Trim();
         }
 
         private void DecreaseStamina(IPeak peak)

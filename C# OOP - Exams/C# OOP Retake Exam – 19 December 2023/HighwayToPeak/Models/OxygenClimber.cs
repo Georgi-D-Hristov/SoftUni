@@ -6,5 +6,10 @@
             : base(name, stamina: 10)
         {
         }
+
+        public override void Rest(int daysCount)
+        {
+            Stamina += daysCount;
+        }
     }
 }
