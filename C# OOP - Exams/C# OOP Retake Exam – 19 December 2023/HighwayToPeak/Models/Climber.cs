@@ -46,11 +46,11 @@
             {
                 if (value < 0)
                 {
-                    _stamina = 0;
+                    value = 0;
                 }
                 else if (value > 10)
                 {
-                    _stamina = 10;
+                    value = 10;
                 }
                 _stamina = value;
             }

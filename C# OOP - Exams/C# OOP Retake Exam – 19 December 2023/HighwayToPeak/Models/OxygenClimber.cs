@@ -10,6 +10,7 @@
         public override void Rest(int daysCount)
         {
             Stamina += daysCount;
+
         }
     }
 }

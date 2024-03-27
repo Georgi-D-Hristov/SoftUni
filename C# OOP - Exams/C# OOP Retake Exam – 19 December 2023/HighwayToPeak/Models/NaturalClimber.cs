@@ -20,6 +20,8 @@ namespace HighwayToPeak.Models
         public override void Rest(int daysCount)
         {
             Stamina += 2 * daysCount;
+           
+           
         }
     }
 }
