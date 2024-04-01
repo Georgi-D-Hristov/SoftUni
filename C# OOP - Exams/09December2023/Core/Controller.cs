@@ -1,4 +1,5 @@
-﻿using NauticalCatchChallenge.Core.Contracts;
+﻿using Microsoft.VisualBasic;
+using NauticalCatchChallenge.Core.Contracts;
 using NauticalCatchChallenge.Models;
 using NauticalCatchChallenge.Models.Contracts;
 using NauticalCatchChallenge.Repositories;
@@ -12,6 +13,7 @@ namespace NauticalCatchChallenge.Core
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Xml.Linq;
 
     public class Controller : IController
     {
@@ -24,7 +26,7 @@ namespace NauticalCatchChallenge.Core
         }
         public string DiveIntoCompetition(string diverType, string diverName)
         {
-            if (diverType is not("FreeDiver" or "ScubaDiver"))
+            if (diverType is not ("FreeDiver" or "ScubaDiver"))
             {
                 return string.Format(OutputMessages.DiverTypeNotPresented, diverType);
             }
@@ -34,7 +36,7 @@ namespace NauticalCatchChallenge.Core
                 return string.Format(OutputMessages.DiverNameDuplication, diverName, _divers.GetType().Name);
             }
 
-            if (diverType== "FreeDiver")
+            if (diverType == "FreeDiver")
             {
                 _divers.AddModel(new FreeDiver(diverName));
             }
@@ -59,17 +61,17 @@ namespace NauticalCatchChallenge.Core
                 return string.Format(OutputMessages.FishNameDuplication, fishName, _fishes.GetType().Name);
             }
 
-            if (fishType== "ReefFish")
+            if (fishType == "ReefFish")
             {
                 _fishes.AddModel(new ReefFish(fishName, points));
             }
 
-            if (fishType== "DeepSeaFish")
+            if (fishType == "DeepSeaFish")
             {
                 _fishes.AddModel(new DeepSeaFish(fishName, points));
             }
 
-            if (fishType== "PredatoryFish")
+            if (fishType == "PredatoryFish")
             {
                 _fishes.AddModel(new PredatoryFish(fishName, points));
             }
@@ -79,17 +81,83 @@ namespace NauticalCatchChallenge.Core
 
         public string ChaseFish(string diverName, string fishName, bool isLucky)
         {
-            throw new NotImplementedException();
+            var diver = _divers.GetModel(diverName);
+            var fish = _fishes.GetModel(fishName);
+
+            if (diver is null)
+            {
+                return string.Format(OutputMessages.DiverNotFound, _divers.GetType().Name, diverName);
+            }
+
+            if (fish is null)
+            {
+                return string.Format(OutputMessages.FishNotAllowed, fishName);
+            }
+
+            if (diver.HasHealthIssues == true)
+            {
+                return string.Format(OutputMessages.DiverHealthCheck, diverName);
+            }
+
+            if (diver.OxygenLevel < fish.TimeToCatch)
+            {
+                diver.Miss(fish.TimeToCatch);
+                if (diver.OxygenLevel == 0)
+                {
+                    diver.UpdateHealthStatus();
+                }
+                return string.Format(OutputMessages.DiverMisses, diverName, fishName);
+
+            }
+
+            if (diver.OxygenLevel == fish.TimeToCatch && isLucky == true)
+            {
+                diver.Hit(fish);
+                return string.Format(OutputMessages.DiverHitsFish, diverName, fish.Points, fishName);
+            }
+            if (diver.OxygenLevel == fish.TimeToCatch && isLucky == false)
+            {
+                diver.Miss(fish.TimeToCatch);
+                if (diver.OxygenLevel == 0)
+                {
+                    diver.UpdateHealthStatus();
+                }
+                return string.Format(OutputMessages.DiverMisses, diverName, fishName);
+            }
+
+            diver.Hit(fish);
+            return string.Format(OutputMessages.DiverHitsFish, diverName, fish.Points, fishName);
+
         }
 
         public string HealthRecovery()
         {
-            throw new NotImplementedException();
+            var diversWithHelthIssues = _divers.Models.Where(d => d.HasHealthIssues == true).ToList();
+
+            foreach (var diver in diversWithHelthIssues)
+            {
+                diver.UpdateHealthStatus();
+                diver.RenewOxy();
+            }
+
+            return string.Format(OutputMessages.DiversRecovered, diversWithHelthIssues.Count);
         }
 
         public string DiverCatchReport(string diverName)
         {
-            throw new NotImplementedException();
+            var diver = _divers.GetModel(diverName);
+
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"Diver [ Name: {diverName}, Oxygen left: {diver.OxygenLevel}, Fish caught: {diver.Catch.Count}, Points earned: {diver.CompetitionPoints} ]");
+            sb.AppendLine("Catch Report:");
+            foreach (var fishName in diver.Catch)
+            {
+                var fish = _fishes.GetModel(fishName);
+                sb.AppendLine(fish.ToString());
+            }
+
+            return sb.ToString().Trim();
         }
 
         public string CompetitionStatistics()

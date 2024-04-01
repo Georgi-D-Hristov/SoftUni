@@ -1,0 +1,45 @@
+MaxineHarper is successfully registered for the competition -> DiverRepository.
+JamalCarter is successfully registered for the competition -> DiverRepository.
+SkyDiver is not allowed in our competition.
+OscarWallace is successfully registered for the competition -> DiverRepository.
+LilaMoreno is successfully registered for the competition -> DiverRepository.
+LilaMoreno is already a participant -> DiverRepository.
+AzureDamselfish is allowed for chasing.
+BluestripeSnapper is allowed for chasing.
+YellowtailSurgeonfish is allowed for chasing.
+Barracuda is allowed for chasing.
+Coryphaena is allowed for chasing.
+Bluefish is allowed for chasing.
+SwordFish is allowed for chasing.
+Mahi-Mahi is allowed for chasing.
+Tuna is allowed for chasing.
+AquariumFish is forbidden for chasing in our competition.
+Barracuda is already allowed -> FishRepository.
+DiverRepository has no FionaBennett registered for the competition.
+SilverArowana is not allowed to be caught in this competition.
+MaxineHarper hits a 0pt. YellowtailSurgeonfish.
+MaxineHarper hits a 0pt. AzureDamselfish.
+MaxineHarper hits a 0pt. Mahi-Mahi.
+MaxineHarper hits a 0pt. Tuna.
+MaxineHarper hits a 0pt. Bluefish.
+MaxineHarper hits a 0pt. Coryphaena.
+MaxineHarper missed a good BluestripeSnapper.
+OscarWallace hits a 0pt. Barracuda.
+OscarWallace hits a 0pt. YellowtailSurgeonfish.
+OscarWallace missed a good Tuna.
+OscarWallace will not be allowed to dive, due to health issues.
+JamalCarter missed a good Tuna.
+JamalCarter missed a good BluestripeSnapper.
+LilaMoreno hits a 0pt. Tuna.
+LilaMoreno hits a 0pt. Mahi-Mahi.
+LilaMoreno hits a 0pt. SwordFish.
+Divers recovered: 3
+LilaMoreno missed a good Tuna.
+LilaMoreno will not be allowed to dive, due to health issues.
+LilaMoreno will not be allowed to dive, due to health issues.
+Diver [ Name: LilaMoreno, Oxygen left: 0, Fish caught: 3, Points earned: 0 ]
+Catch Report:
+DeepSeaFish: Tuna [ Points: 0, Time to Catch: 180 seconds ]
+DeepSeaFish: Mahi-Mahi [ Points: 0, Time to Catch: 180 seconds ]
+DeepSeaFish: SwordFish [ Points: 0, Time to Catch: 180 seconds ]
+The method or operation is not implemented.
