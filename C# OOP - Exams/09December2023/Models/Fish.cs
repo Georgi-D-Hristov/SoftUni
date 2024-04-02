@@ -51,6 +51,7 @@ namespace NauticalCatchChallenge.Models
                 {
                     throw new ArgumentException(ExceptionMessages.PointsNotInRange);
                 }
+                _points = value;
             }
         }
 

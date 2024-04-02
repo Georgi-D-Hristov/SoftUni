@@ -13,7 +13,7 @@ namespace NauticalCatchChallenge.Models
     {
         private string _name;
         private int _oxygenLevel;
-        private HashSet<string> _catch;
+        private List<string> _catch;
         private double _competitionPoints;
         private bool _hasHealthIssues;
 
@@ -21,8 +21,8 @@ namespace NauticalCatchChallenge.Models
         {
             Name = name;
             OxygenLevel = oxygenLevel;
-            _catch = new HashSet<string>();
-            CompetitionPoints = 0;
+            _catch = new List<string>();
+            _competitionPoints = 0;
             HasHealthIssues = false;
         }
 
@@ -60,11 +60,8 @@ namespace NauticalCatchChallenge.Models
 
         public double CompetitionPoints
         {
-            get => _competitionPoints;
-            private set
-            {
-                _competitionPoints = value;
-            }
+            get => Math.Round(_competitionPoints, 1);
+           
         }
 
         public bool HasHealthIssues
@@ -80,7 +77,7 @@ namespace NauticalCatchChallenge.Models
         {
             OxygenLevel -= fish.TimeToCatch;
             _catch.Add(fish.Name);
-            CompetitionPoints += fish.Points;
+            _competitionPoints += Math.Round(fish.Points, 1, MidpointRounding.AwayFromZero);
         }
 
         public abstract void Miss(int TimeToCatch);
@@ -90,25 +87,18 @@ namespace NauticalCatchChallenge.Models
 
         public void UpdateHealthStatus()
         {
-            if (HasHealthIssues)
-            {
-                HasHealthIssues=false;
-            }
-            else
-            {
-                HasHealthIssues=true;
-            }
+            HasHealthIssues = !HasHealthIssues;
         }
 
         public abstract void RenewOxy();
 
         public override string ToString()
         {
-            return base.ToString();
-            {
-                return
-                    $"Diver [ Name: {Name}, Oxygen left: {OxygenLevel}, Fish caught: {Catch.Count}, Points earned: {CompetitionPoints} ]";
-            }
+        
+          
+            return
+                $"Diver [ Name: {Name}, Oxygen left: {OxygenLevel}, Fish caught: {Catch.Count}, Points earned: {CompetitionPoints} ]";
+
         }
     }
 }

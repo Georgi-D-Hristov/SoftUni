@@ -84,6 +84,8 @@ namespace NauticalCatchChallenge.Core
             var diver = _divers.GetModel(diverName);
             var fish = _fishes.GetModel(fishName);
 
+            
+
             if (diver is null)
             {
                 return string.Format(OutputMessages.DiverNotFound, _divers.GetType().Name, diverName);
@@ -94,6 +96,11 @@ namespace NauticalCatchChallenge.Core
                 return string.Format(OutputMessages.FishNotAllowed, fishName);
             }
 
+            if (diver.OxygenLevel == 0)
+            {
+                diver.UpdateHealthStatus();
+            }
+
             if (diver.HasHealthIssues == true)
             {
                 return string.Format(OutputMessages.DiverHealthCheck, diverName);
@@ -102,10 +109,7 @@ namespace NauticalCatchChallenge.Core
             if (diver.OxygenLevel < fish.TimeToCatch)
             {
                 diver.Miss(fish.TimeToCatch);
-                if (diver.OxygenLevel == 0)
-                {
-                    diver.UpdateHealthStatus();
-                }
+                
                 return string.Format(OutputMessages.DiverMisses, diverName, fishName);
 
             }
@@ -118,10 +122,7 @@ namespace NauticalCatchChallenge.Core
             if (diver.OxygenLevel == fish.TimeToCatch && isLucky == false)
             {
                 diver.Miss(fish.TimeToCatch);
-                if (diver.OxygenLevel == 0)
-                {
-                    diver.UpdateHealthStatus();
-                }
+               
                 return string.Format(OutputMessages.DiverMisses, diverName, fishName);
             }
 
@@ -132,12 +133,21 @@ namespace NauticalCatchChallenge.Core
 
         public string HealthRecovery()
         {
-            var diversWithHelthIssues = _divers.Models.Where(d => d.HasHealthIssues == true).ToList();
+            var diversWithHelthIssues = _divers.Models.Where(d => d.HasHealthIssues == true||d.OxygenLevel==0).ToList();
 
             foreach (var diver in diversWithHelthIssues)
             {
-                diver.UpdateHealthStatus();
-                diver.RenewOxy();
+                if (diver.HasHealthIssues==true)
+                {
+                    diver.UpdateHealthStatus();
+                    diver.RenewOxy();
+                }
+                else
+                {
+                    diver.RenewOxy();
+                }
+                
+                
             }
 
             return string.Format(OutputMessages.DiversRecovered, diversWithHelthIssues.Count);
@@ -162,7 +172,21 @@ namespace NauticalCatchChallenge.Core
 
         public string CompetitionStatistics()
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+
+            sb.AppendLine("**Nautical-Catch-Challenge**");
+            var resultDivers = _divers.Models
+                .Where(d=>d.HasHealthIssues==false&&d.OxygenLevel>0)
+                .OrderByDescending(d => d.CompetitionPoints)
+                .ThenByDescending(d => d.Catch.Count)
+                .ThenBy(d => d.Name).ToList();
+
+            foreach (var diver in resultDivers)
+            {
+                sb.AppendLine(diver.ToString());
+            }
+
+            return sb.ToString().Trim();
         }
     }
 }

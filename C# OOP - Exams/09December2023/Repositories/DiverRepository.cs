@@ -11,11 +11,11 @@ namespace NauticalCatchChallenge.Repositories
 
     public class DiverRepository : IRepository<IDiver>
     {
-        private HashSet<IDiver> _models;
+        private List<IDiver> _models;
 
         public DiverRepository()
         {
-            _models = new HashSet<IDiver>();
+            _models = new List<IDiver>();
         }
 
         public IReadOnlyCollection<IDiver> Models => _models;
@@ -27,7 +27,7 @@ namespace NauticalCatchChallenge.Repositories
 
         public IDiver GetModel(string name)
         {
-            return _models.FirstOrDefault(d => d.Name == name);
+            return _models.FirstOrDefault(f => f.Name == name);
         }
     }
 }

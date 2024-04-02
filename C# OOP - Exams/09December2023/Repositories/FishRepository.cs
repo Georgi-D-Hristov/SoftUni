@@ -11,11 +11,11 @@ namespace NauticalCatchChallenge.Repositories
 
     public class FishRepository:IRepository<IFish>
     {
-        private HashSet<IFish> _models;
-
+        private List<IFish> _models;
+            
         public FishRepository()
         {
-            _models=new HashSet<IFish>();
+            _models=new List<IFish>();
         }
 
         public IReadOnlyCollection<IFish> Models => _models;
