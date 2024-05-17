@@ -64,7 +64,7 @@ namespace Handball.Models
 
         public void Win()
         {
-            PointsEarned += 3;
+            _pointsEarned += 3;
             foreach (var player in _players)
             {
                 player.IncreaseRating();
@@ -82,14 +82,15 @@ namespace Handball.Models
         public void Draw()
         {
             PointsEarned += 1;
-           var goalKeeper = _players.First(p => p.GetType().Name == "Goalkeeper ");
+           var goalKeeper = _players.First(p => p.GetType().Name == typeof(Goalkeeper).Name);
+           
            goalKeeper.IncreaseRating();
         }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"Team: {Name} Points: {PointsEarned}");
+            sb.AppendLine($"Team: {Name} Points: {_pointsEarned}");
             sb.AppendLine($"--Overall rating: {OverallRating}");
             if (_players.Count!=0)
             {
