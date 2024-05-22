@@ -41,3 +41,74 @@ VALUES
 ('Smi', 'pass2', null, null, 'true'),
 ('Sm', 'pass', null, null, 'true'),
 ('S', 'pass4', null, null, 'true')
+
+--09 Change Primary Key
+ALTER TABLE Users 
+alter column Id int not null
+
+--13
+
+create database Movies
+go
+use Movies
+go
+create table Directors
+(
+Id int primary key identity,
+DirectorName nvarchar(30) not null,
+Notes nvarchar(200)
+)
+create table Genres
+(
+Id int primary key identity,
+GenreName nvarchar(30) not null,
+Notes nvarchar(200)
+)
+create table Categories
+(
+Id int primary key identity,
+CategoryName nvarchar(30) not null,
+Notes nvarchar(200)
+)
+create table Movies
+(
+Id int primary key identity,
+Title nvarchar(50) not null,
+DirectorId int not null,
+CopyrightYear date,
+[Length] float,
+GenreId int not null,
+CategoryId int not null,
+Rating float not null,
+Notes nvarchar(max),
+constraint FK_Movies_Directors foreign key (DirectorId) references Directors(Id),
+constraint FK_Movies_Genres foreign key (GenreId) references Genres(Id),
+constraint FK_Movies_Category foreign key (CategoryId) references Categories(Id)
+)
+
+insert into Directors (DirectorName, Notes) values
+('Ivan', null),
+('Ivan1', null),
+('Ivan2', null),
+('Ivan3', null),
+('Ivan4', null)
+insert into Genres (GenreName, Notes) values
+('komedy', null),
+('horrer', null),
+('action', null),
+('drama', null),
+('triller', null)
+
+insert into Categories (CategoryName, Notes) values
+('18+', null),
+('16', null),
+('14', null),
+('family', null),
+('12', null)
+
+insert into Movies (Title, DirectorId, CopyrightYear, [Length], GenreId, CategoryId,Rating) values
+('Doom', 1, '2010', 96, 1, 1, 3),
+('LOR', 2, '2000', 220, 2, 1, 10),
+('Blade',3 , '1996', 100, 3, 3, 10),
+('FF6', 4,'2016', 120, 1, 4, 6),
+('It', 5,'2020', 180, 4, 5, 1)
