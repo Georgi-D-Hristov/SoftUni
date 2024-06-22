@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using EntityFrameworkIntroductionExercise.Data.Models;
-
-namespace EntityFrameworkIntroductionExercise.Data
+﻿namespace MyDataBase.Infrastructure.Data
 {
+    using Microsoft.EntityFrameworkCore;
+    using MyDataBase.Infrastructure.Data.Models;
+
     public partial class SoftUniDBContext : DbContext
     {
         public SoftUniDBContext()

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
-
-namespace EntityFrameworkIntroductionExercise.Data.Models
+﻿namespace MyDataBase.Infrastructure.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using Microsoft.EntityFrameworkCore;
+
     public partial class Project
     {
         public Project()
