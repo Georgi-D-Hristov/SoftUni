@@ -112,3 +112,105 @@ insert into Movies (Title, DirectorId, CopyrightYear, [Length], GenreId, Categor
 ('Blade',3 , '1996', 100, 3, 3, 10),
 ('FF6', 4,'2016', 120, 1, 4, 6),
 ('It', 5,'2020', 180, 4, 5, 1)
+
+--14.	Car Rental Database
+
+--Using SQL queries create CarRental database with the following entities:
+--•	Categories (Id, CategoryName, DailyRate, WeeklyRate, MonthlyRate, WeekendRate)
+--•	Cars (Id, PlateNumber, Manufacturer, Model, CarYear, CategoryId, Doors, Picture, Condition, Available)
+--•	Employees (Id, FirstName, LastName, Title, Notes)
+--•	Customers (Id, DriverLicenceNumber, FullName, Address, City, ZIPCode, Notes)
+--•	RentalOrders (Id, EmployeeId, CustomerId, CarId, TankLevel, KilometrageStart, KilometrageEnd, TotalKilometrage, StartDate, EndDate, TotalDays, RateApplied, TaxRate, OrderStatus, Notes)
+--Set the most appropriate data types for each column. Set a primary key to each table. Populate each table with only 3 records. Make sure the columns that are present in 2 tables would be of the same data type. Consider which fields are always required and which are optional. Submit your CREATE TABLE and INSERT statements as Run queries & check DB.
+
+create database CarRental
+go
+use CarRental
+create table Categories
+(
+Id int primary key identity,
+CategoryName varchar(30) not null,
+DailyRate decimal(4,2) not null,
+WeeklyRate decimal(4,2) not null,
+MonthlyRate decimal(4,2) not null,
+WeekendRate decimal(4,2) not null
+)
+create table Cars
+(
+Id int primary key identity,
+PlateNumber char(8) not null,
+Manufacturer varchar(30) not null,
+Model varchar(30) not null,
+CarYear date,
+CategoryId int foreign key references Categories(Id),
+Doors int,
+Picture binary,
+Condition varchar(50),
+Available bit not null
+)
+create table Employees
+(
+Id int primary key identity,
+FirstName varchar(30) not null,
+LastName varchar(30) not null,
+Title varchar(30),
+Notes varchar(max)
+)
+create table Customers
+(
+Id int primary key identity,
+DriverLicenceNumber char(4) not null,
+FullName varchar(50) not null,
+[Address] varchar(50),
+City varchar(50),
+ZIPCode char(4),
+Notes varchar(max)
+)
+create table RentalOrders
+(
+Id int primary key identity,
+EmployeeId int foreign key references Employees(Id),
+CustomerId int foreign key references Customers(Id),
+CarId int foreign key references Cars(Id),
+TankLevel float,
+KilometrageStart float not null,
+KilometrageEnd float not null,
+TotalKilometrage float not null,
+StartDate datetime2,
+EndDate datetime2,
+TotalDays int not null,
+RateApplied decimal(4,2) not null,
+TaxRate decimal(4,2) not null,
+OrderStatus varchar(30) not null,
+Notes varchar(max)
+)
+
+insert into Categories (CategoryName, DailyRate, WeeklyRate, MonthlyRate, WeekendRate)
+values
+('Luxury ', 1.00, 1.00,1,1)
+('Hybrid ', 10.5, 60.05, 50.99, 25.90),
+('Economy', 10.50, 60.05, 20.99, 50.90)
+
+insert into Cars (PlateNumber, Manufacturer, Model, CarYear, CategoryId, Doors, Picture, Condition,Available)
+values
+('ca1324kk', 'Renauth', 'clio', '2003', 13, 2, null, 'used', 1),
+('ca1325kk', 'BMW', 'x5', '2023', 11, 5, null, 'perfect', 1),
+('ca1326kk', 'Mercedes', 'eqs', '2020', 12, 4, null, 'used', 1)
+
+insert into Employees (FirstName, LastName, Title, Notes)
+values
+('ben', 'simons', 'engineer', null),
+('ken', 'petri', 'qa', null),
+('sven', 'capry', 'cleaner', null)
+
+insert into Customers (DriverLicenceNumber, FullName, [Address], City, ZIPCode,Notes)
+values
+('1234', 'karl antony', null, 'Mineapolis', null,null),
+('1234', 'karl folt', null, 'LA', null,null),
+('1234', 'karl send', null, 'Boston', null,null)
+
+insert into RentalOrders (EmployeeId, CustomerId, CarId, TankLevel, KilometrageStart, KilometrageEnd, TotalKilometrage, StartDate, EndDate, TotalDays, RateApplied, TaxRate, OrderStatus, Notes)
+values
+(1, 1, 4, 60, 1000, 2000, 1000, null, null, 3, 10, 10.00, 'ok', null),
+(2, 2, 5, 60, 1000, 2000, 1000, null, null, 3, 10, 10, 'ok', null),
+(3, 3, 3, 60, 1000, 2000, 1000, null, null, 3, 10, 10, 'ok', null)
