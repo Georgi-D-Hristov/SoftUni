@@ -9,6 +9,11 @@ public class StartUp
     {
         using SoftUniDBContext data = new SoftUniDBContext();
 
+        GetEmployeesFullInformation(data);
+    }
+
+    public static void GetEmployeesFullInformation(SoftUniDBContext data)
+    {
         var employees = data.Employees
             .OrderBy(e => e.EmployeeId)
             .Select
