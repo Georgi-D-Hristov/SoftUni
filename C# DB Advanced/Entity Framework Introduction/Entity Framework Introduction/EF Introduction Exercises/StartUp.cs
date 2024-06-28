@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using SoftUni.Data;
+    using SoftUni.Models;
     using System.Text;
     using System.Threading.Channels;
 
@@ -20,8 +21,43 @@
             // Console.WriteLine(GetEmployeesWithSalaryOver50000(data));
 
             //05. Employees from Research and Development
-            Console.WriteLine(GetEmployeesFromResearchAndDevelopment(data));
-           
+            //Console.WriteLine(GetEmployeesFromResearchAndDevelopment(data));
+
+            //06. Adding a New Address and Updating Employee
+            Console.WriteLine(AddNewAddressToEmployee(data));
+
+
+        }
+        public static string AddNewAddressToEmployee(SoftUniContext context)
+        {
+           var newAddress = new Address();
+          newAddress.TownId = 5;
+            newAddress.AddressText = "Vitoshka 15";
+
+            context.Addresses.Add(newAddress);
+
+            var employee = context.Employees
+                .Where(e => e.LastName == "Nakov")
+                .FirstOrDefault();
+
+            employee.Address = newAddress;
+
+            context.SaveChangesAsync();
+
+            var employees = context.Employees
+                .OrderByDescending(e=>e.AddressId)
+                .Select(e => e.Address)
+                .Take(10)
+                .ToList();
+
+            var sb = new StringBuilder();
+
+            foreach (var emp in employees)
+            {
+                sb.AppendLine($"{emp.AddressText}");
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string  GetEmployeesFromResearchAndDevelopment(SoftUniContext context)
@@ -32,11 +68,10 @@
                     {
                         e.FirstName,
                         e.LastName,
-                        e.Departments.Select(d=> new { d.Name }),
-                        e.Salary,
-                        e.Department
+                        e.Department,
+                        e.Salary
                     })
-                .Where(e=>e.Department.Name== "Research" || e.Department.Name == "Development")
+                .Where(e=>e.Department.Name== "Research and Development")
                 .OrderBy(e=>e.Salary)
                 .ThenByDescending(e=>e.FirstName)
             
