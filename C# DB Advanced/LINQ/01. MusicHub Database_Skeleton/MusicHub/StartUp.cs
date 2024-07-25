@@ -45,14 +45,17 @@
             {
                 sb.AppendLine($"-AlbumName: {albums.AlbumName}");
                 sb.AppendLine($"-ReleaseDate: {albums.AlbumReleaseDate}");
+                sb.AppendLine($"-ProducerName: {albums.ProducerName}");
                 sb.AppendLine($"-Songs:");
                 foreach (var songs in albums.AlbumSongs)
                 {
                     sb.AppendLine($"---#{numberOfSong++}");
                     sb.AppendLine($"---SongName: {songs.SongName}");
                     sb.AppendLine($"---Price: {songs.SongPrice:f2}");
+                    sb.AppendLine($"---Writer: {songs.SongWriter}");
                 }
                 numberOfSong = 1;
+                sb.AppendLine($"-AlbumPrice: {albums.TotalAlbumPrice:f2}");
             }
 
             return sb.ToString().Trim();
