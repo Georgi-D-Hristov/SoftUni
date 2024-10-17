@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SeminarHub.Data;
 
@@ -11,9 +12,11 @@ using SeminarHub.Data;
 namespace SeminarHub.Data.Migrations
 {
     [DbContext(typeof(SeminarHubDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241017120002_Change connection string")]
+    partial class Changeconnectionstring
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,106 +227,6 @@ namespace SeminarHub.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SeminarHub.Data.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Technology & Innovation"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Business & Entrepreneurship"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Science & Research"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Arts & Culture"
-                        });
-                });
-
-            modelBuilder.Entity("SeminarHub.Data.Models.Seminar", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateAndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Details")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Lecturer")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("OrganizerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Topic")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("OrganizerId");
-
-                    b.ToTable("Seminars");
-                });
-
-            modelBuilder.Entity("SeminarHub.Data.Models.SeminarParticipant", b =>
-                {
-                    b.Property<int>("SeminarId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ParticipantId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("SeminarId", "ParticipantId");
-
-                    b.HasIndex("ParticipantId");
-
-                    b.ToTable("SeminarsParticipants");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -373,54 +276,6 @@ namespace SeminarHub.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SeminarHub.Data.Models.Seminar", b =>
-                {
-                    b.HasOne("SeminarHub.Data.Models.Category", "Category")
-                        .WithMany("Seminars")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Organizer")
-                        .WithMany()
-                        .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Organizer");
-                });
-
-            modelBuilder.Entity("SeminarHub.Data.Models.SeminarParticipant", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Participant")
-                        .WithMany()
-                        .HasForeignKey("ParticipantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SeminarHub.Data.Models.Seminar", "Seminar")
-                        .WithMany("SeminarsParticipants")
-                        .HasForeignKey("SeminarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Participant");
-
-                    b.Navigation("Seminar");
-                });
-
-            modelBuilder.Entity("SeminarHub.Data.Models.Category", b =>
-                {
-                    b.Navigation("Seminars");
-                });
-
-            modelBuilder.Entity("SeminarHub.Data.Models.Seminar", b =>
-                {
-                    b.Navigation("SeminarsParticipants");
                 });
 #pragma warning restore 612, 618
         }
